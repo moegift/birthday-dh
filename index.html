@@ -890,7 +890,7 @@ body.started .heart {
     position: absolute;
     width: 180px;
     left: 50%;
-    top: 58%;
+    top: 55%;
     transform: translate(-50%, -50%);
     z-index: 5;
     opacity: 0;
@@ -899,10 +899,12 @@ body.started .heart {
 
 .universe.space-mode .duck-floating {
     animation:
-        duckAppear 2s ease 2s forwards,
-        duckRoam 18s ease-in-out 4s infinite alternate;
+        duckAppear 4s ease forwards,
+        duckFloat 45s ease-in-out 4s infinite alternate;
 }
 
+
+/* Vịt hiện ra thật chậm */
 @keyframes duckAppear {
     from {
         opacity: 0;
@@ -913,53 +915,61 @@ body.started .heart {
     }
 }
 
-@keyframes duckRoam {
 
-    0% {
-        left: 12%;
-        top: 72%;
-        transform: rotate(-4deg);
-    }
-
-    20% {
-        left: 28%;
-        top: 30%;
-        transform: rotate(5deg);
-    }
-
-    40% {
-        left: 58%;
-        top: 68%;
-        transform: rotate(-3deg);
-    }
-
-    60% {
-        left: 78%;
-        top: 25%;
-        transform: rotate(4deg);
-    }
-
-    80% {
-        left: 48%;
-        top: 18%;
-        transform: rotate(-5deg);
-    }
-
-    100% {
-        left: 82%;
-        top: 75%;
-        transform: rotate(3deg);
-    }
-
-}
-
+/* Trôi vô định trong vũ trụ */
 @keyframes duckFloat {
-    0%, 100% {
-        transform: translate(-50%, -50%) translateY(0) rotate(0deg);
+    0% {
+        transform:
+            translate(-80px, 30px)
+            rotate(-2deg);
+    }
+
+    12% {
+        transform:
+            translate(-35px, 5px)
+            rotate(1deg);
+    }
+
+    25% {
+        transform:
+            translate(20px, -25px)
+            rotate(2deg);
+    }
+
+    38% {
+        transform:
+            translate(75px, -5px)
+            rotate(-1deg);
     }
 
     50% {
-        transform: translate(-50%, -50%) translateY(-12px) rotate(1deg);
+        transform:
+            translate(110px, 35px)
+            rotate(2deg);
+    }
+
+    63% {
+        transform:
+            translate(65px, 65px)
+            rotate(-2deg);
+    }
+
+    76% {
+        transform:
+            translate(-5px, 45px)
+            rotate(-1deg);
+    }
+
+    88% {
+        transform:
+            translate(-65px, 15px)
+            rotate(2deg);
+    }
+
+    100% {
+        transform:
+            translate(-100px, -15px)
+            rotate(-2deg);
     }
 }
     
