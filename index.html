@@ -2851,64 +2851,82 @@ function startDuckJourney() {
 
     if (!duck) return;
 
+    const duckSize = 180;
+    const margin = duckSize + 120;
+
+    const W = window.innerWidth;
+    const H = window.innerHeight;
+
     const journeys = [
+
         // Trái dưới → phải trên
         {
-            startX: -220,
-            startY: window.innerHeight * 0.78,
-            endX: window.innerWidth + 220,
-            endY: -180
+            startX: -margin,
+            startY: H * 0.78,
+            endX: W + margin,
+            endY: -margin
         },
 
         // Trái trên → phải dưới
         {
-            startX: -220,
-            startY: window.innerHeight * 0.18,
-            endX: window.innerWidth + 220,
-            endY: window.innerHeight * 0.82
+            startX: -margin,
+            startY: H * 0.18,
+            endX: W + margin,
+            endY: H * 0.82
         },
 
         // Dưới trái → trên phải
         {
-            startX: window.innerWidth * 0.12,
-            startY: window.innerHeight + 220,
-            endX: window.innerWidth * 0.88,
-            endY: -220
+            startX: W * 0.12,
+            startY: H + margin,
+            endX: W * 0.88,
+            endY: -margin
         },
 
         // Trên trái → dưới phải
         {
-            startX: window.innerWidth * 0.08,
-            startY: -220,
-            endX: window.innerWidth * 0.92,
-            endY: window.innerHeight + 220
+            startX: W * 0.08,
+            startY: -margin,
+            endX: W * 0.92,
+            endY: H + margin
         },
 
         // Phải dưới → trái trên
         {
-            startX: window.innerWidth + 220,
-            startY: window.innerHeight * 0.82,
-            endX: -220,
-            endY: window.innerHeight * 0.18
+            startX: W + margin,
+            startY: H * 0.82,
+            endX: -margin,
+            endY: H * 0.18
         },
 
         // Phải trên → trái dưới
         {
-            startX: window.innerWidth + 220,
-            startY: window.innerHeight * 0.18,
-            endX: -220,
-            endY: window.innerHeight * 0.82
+            startX: W + margin,
+            startY: H * 0.18,
+            endX: -margin,
+            endY: H * 0.82
         }
     ];
 
-    let journeyIndex = Math.floor(Math.random() * journeys.length);
+    let lastJourney = -1;
 
     function flyDuck() {
 
+        // Chọn ngẫu nhiên nhưng không lặp lại đường vừa bay
+        let journeyIndex;
+
+        do {
+            journeyIndex = Math.floor(Math.random() * journeys.length);
+        } while (
+            journeyIndex === lastJourney &&
+            journeys.length > 1
+        );
+
+        lastJourney = journeyIndex;
+
         const path = journeys[journeyIndex];
 
-        journeyIndex = (journeyIndex + 1) % journeys.length;
-
+        // Reset vịt
         duck.style.animation = "none";
         duck.style.opacity = "0";
 
@@ -2916,93 +2934,121 @@ function startDuckJourney() {
 
         duck.style.left = path.startX + "px";
         duck.style.top = path.startY + "px";
+        duck.style.transform =
+            "translate(-50%, -50%) rotate(-2deg)";
 
-        duck.style.transform = "translate(-50%, -50%) rotate(0deg)";
-
+        // Cho vịt xuất hiện nhẹ
         setTimeout(function () {
 
             duck.style.opacity = "1";
 
-            duck.animate(
+            const dx = path.endX - path.startX;
+            const dy = path.endY - path.startY;
+
+            // Zigzag nhẹ theo đường bay
+            const animation = duck.animate(
+
                 [
+
                     {
                         left: path.startX + "px",
                         top: path.startY + "px",
-                        transform: "translate(-50%, -50%) rotate(-3deg)"
-                    },
-
-                    {
-                        left:
-                            (path.startX +
-                            (path.endX - path.startX) * 0.22) + "px",
-
-                        top:
-                            (path.startY +
-                            (path.endY - path.startY) * 0.22 -
-                            45) + "px",
-
-                        transform:
-                            "translate(-50%, -50%) rotate(2deg)"
-                    },
-
-                    {
-                        left:
-                            (path.startX +
-                            (path.endX - path.startX) * 0.45) + "px",
-
-                        top:
-                            (path.startY +
-                            (path.endY - path.startY) * 0.45 +
-                            35) + "px",
-
                         transform:
                             "translate(-50%, -50%) rotate(-2deg)"
                     },
 
                     {
                         left:
-                            (path.startX +
-                            (path.endX - path.startX) * 0.68) + "px",
+                            (path.startX + dx * 0.18) + "px",
 
                         top:
-                            (path.startY +
-                            (path.endY - path.startY) * 0.68 -
-                            30) + "px",
+                            (path.startY + dy * 0.18 - 35) + "px",
+
+                        transform:
+                            "translate(-50%, -50%) rotate(1deg)"
+                    },
+
+                    {
+                        left:
+                            (path.startX + dx * 0.36) + "px",
+
+                        top:
+                            (path.startY + dy * 0.36 + 30) + "px",
 
                         transform:
                             "translate(-50%, -50%) rotate(2deg)"
+                    },
+
+                    {
+                        left:
+                            (path.startX + dx * 0.54) + "px",
+
+                        top:
+                            (path.startY + dy * 0.54 - 28) + "px",
+
+                        transform:
+                            "translate(-50%, -50%) rotate(-1deg)"
+                    },
+
+                    {
+                        left:
+                            (path.startX + dx * 0.72) + "px",
+
+                        top:
+                            (path.startY + dy * 0.72 + 25) + "px",
+
+                        transform:
+                            "translate(-50%, -50%) rotate(2deg)"
+                    },
+
+                    {
+                        left:
+                            (path.startX + dx * 0.88) + "px",
+
+                        top:
+                            (path.startY + dy * 0.88 - 18) + "px",
+
+                        transform:
+                            "translate(-50%, -50%) rotate(-1deg)"
                     },
 
                     {
                         left: path.endX + "px",
                         top: path.endY + "px",
+
                         transform:
                             "translate(-50%, -50%) rotate(-2deg)"
                     }
+
                 ],
+
                 {
-                    duration: 30000,
-                    easing: "ease-in-out",
+                    // 55 giây — bay rất chậm
+                    duration: 55000,
+
+                    // Đi đều, không khựng ở các điểm zigzag
+                    easing: "linear",
+
                     fill: "forwards"
                 }
             );
 
-            setTimeout(function () {
+            // Chỉ xử lý khi vịt ĐÃ bay hết đường
+            animation.finished.then(function () {
 
                 duck.style.opacity = "0";
 
-                // Nghỉ một chút trước khi xuất hiện
+                // Nghỉ 4 giây rồi xuất hiện từ góc khác
                 setTimeout(function () {
                     flyDuck();
-                }, 3500);
+                }, 4000);
 
-            }, 30000);
+            });
 
         }, 800);
-
     }
 
-    // Đợi vũ trụ hiện lên rồi mới cho vịt bay
+    // Đợi background universe hiện xong
     setTimeout(function () {
         flyDuck();
     }, 3500);
