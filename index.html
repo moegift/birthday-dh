@@ -510,6 +510,214 @@ audio {
     letter-spacing:
         2px;
 
+    position: absolute;
+
+    overflow: visible;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,0.9),
+        0 0 18px rgba(255,225,170,0.9),
+        0 0 35px rgba(255,205,130,0.7);
+
+}
+
+
+/* CHỮ HAPPY BIRTHDAY */
+
+.happy-text {
+
+    display: inline-block;
+
+    animation:
+        happyGlow
+        1.5s
+        ease-in-out
+        0.8s
+        infinite;
+
+}
+
+
+/* HẠT LẤP LÁNH */
+
+.sparkle {
+
+    position: absolute;
+
+    display: block;
+
+    font-family:
+        "Baloo 2",
+        sans-serif;
+
+    font-size:
+        clamp(18px, 3vw, 32px);
+
+    font-weight:
+        800;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 12px white,
+        0 0 22px rgba(255,220,150,0.9);
+
+    animation:
+        sparkleAppear
+        1.2s
+        ease-in-out
+        forwards,
+        sparkleTwinkle
+        1.4s
+        ease-in-out
+        1.2s
+        infinite;
+
+}
+
+
+/* VỊ TRÍ CÁC HẠT */
+
+.sparkle-1 {
+    left: 2%;
+    top: 5%;
+    animation-delay: 0.15s, 1.4s;
+}
+
+.sparkle-2 {
+    left: 18%;
+    top: -32%;
+    animation-delay: 0.35s, 1.8s;
+}
+
+.sparkle-3 {
+    left: 48%;
+    top: -45%;
+    animation-delay: 0.05s, 1.2s;
+}
+
+.sparkle-4 {
+    right: 18%;
+    top: -30%;
+    animation-delay: 0.45s, 2s;
+}
+
+.sparkle-5 {
+    right: 2%;
+    top: 8%;
+    animation-delay: 0.25s, 1.6s;
+}
+
+.sparkle-6 {
+    right: 12%;
+    bottom: -28%;
+    animation-delay: 0.55s, 2.2s;
+}
+
+.sparkle-7 {
+    left: 20%;
+    bottom: -35%;
+    animation-delay: 0.4s, 1.9s;
+}
+
+.sparkle-8 {
+    left: 48%;
+    bottom: -42%;
+    animation-delay: 0.65s, 2.4s;
+}
+
+
+/* HẠT XUẤT HIỆN */
+
+@keyframes sparkleAppear {
+
+    0% {
+        opacity: 0;
+        transform:
+            scale(0)
+            rotate(0deg);
+    }
+
+    60% {
+        opacity: 1;
+        transform:
+            scale(1.4)
+            rotate(90deg);
+    }
+
+    100% {
+        opacity: 0.9;
+        transform:
+            scale(1)
+            rotate(180deg);
+    }
+
+}
+
+
+/* HẠT NHẤP NHÁY */
+
+@keyframes sparkleTwinkle {
+
+    0%,
+    100% {
+        opacity: 0.35;
+
+        transform:
+            scale(0.75)
+            rotate(0deg);
+
+        filter:
+            brightness(1);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            scale(1.5)
+            rotate(45deg);
+
+        filter:
+            brightness(2);
+    }
+
+}
+
+
+/* CHỮ LUNG LINH */
+
+@keyframes happyGlow {
+
+    0%,
+    100% {
+
+        filter:
+            brightness(1);
+
+        text-shadow:
+            0 0 8px rgba(255,255,255,0.85),
+            0 0 18px rgba(255,225,170,0.8),
+            0 0 32px rgba(255,205,130,0.55);
+
+    }
+
+    50% {
+
+        filter:
+            brightness(1.55);
+
+        text-shadow:
+            0 0 10px white,
+            0 0 22px white,
+            0 0 40px rgba(255,230,170,0.95),
+            0 0 65px rgba(255,205,130,0.7);
+
+    }
+
 }
 
 
@@ -1604,11 +1812,20 @@ body.started .heart {
 
 
     <div
-        class="message happy"
-        id="happy"
-    >
-        HAPPY BIRTHDAY
-    </div>
+    class="message happy"
+    id="happy"
+>
+    <span class="happy-text">HAPPY BIRTHDAY</span>
+
+    <span class="sparkle sparkle-1">✦</span>
+    <span class="sparkle sparkle-2">✧</span>
+    <span class="sparkle sparkle-3">✦</span>
+    <span class="sparkle sparkle-4">✧</span>
+    <span class="sparkle sparkle-5">✦</span>
+    <span class="sparkle sparkle-6">✧</span>
+    <span class="sparkle sparkle-7">✦</span>
+    <span class="sparkle sparkle-8">✧</span>
+</div>
 
 
     <div
