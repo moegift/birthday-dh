@@ -2939,93 +2939,76 @@ function startDuckJourney() {
             // Zigzag nhẹ theo đường bay
             const animation = duck.animate(
 
-               [
+ [
         {
             left: path.startX + "px",
             top: path.startY + "px",
-            transform:
-                "translate(-50%, -50%) rotate(-4deg)"
+            transform: "translate(-50%, -50%) rotate(-2deg)"
         },
 
         {
-            left:
-                (path.startX + dx * 0.16) + "px",
-
-            top:
-                (path.startY + dy * 0.16 - 25) + "px",
-
-            transform:
-                "translate(-50%, -50%) rotate(2deg)"
+            left: (path.startX + dx * 0.10) + "px",
+            top: (path.startY + dy * 0.10 - 10) + "px",
+            transform: "translate(-50%, -50%) rotate(-1deg)"
         },
 
         {
-            left:
-                (path.startX + dx * 0.32) + "px",
-
-            top:
-                (path.startY + dy * 0.32 + 18) + "px",
-
-            transform:
-                "translate(-50%, -50%) rotate(4deg)"
+            left: (path.startX + dx * 0.20) + "px",
+            top: (path.startY + dy * 0.20 - 18) + "px",
+            transform: "translate(-50%, -50%) rotate(0deg)"
         },
 
         {
-            left:
-                (path.startX + dx * 0.48) + "px",
-
-            top:
-                (path.startY + dy * 0.48 - 20) + "px",
-
-            transform:
-                "translate(-50%, -50%) rotate(-2deg)"
+            left: (path.startX + dx * 0.30) + "px",
+            top: (path.startY + dy * 0.30 - 10) + "px",
+            transform: "translate(-50%, -50%) rotate(1deg)"
         },
 
         {
-            left:
-                (path.startX + dx * 0.64) + "px",
-
-            top:
-                (path.startY + dy * 0.64 + 22) + "px",
-
-            transform:
-                "translate(-50%, -50%) rotate(-4deg)"
+            left: (path.startX + dx * 0.40) + "px",
+            top: (path.startY + dy * 0.40 + 8) + "px",
+            transform: "translate(-50%, -50%) rotate(2deg)"
         },
 
         {
-            left:
-                (path.startX + dx * 0.80) + "px",
-
-            top:
-                (path.startY + dy * 0.80 - 16) + "px",
-
-            transform:
-                "translate(-50%, -50%) rotate(2deg)"
+            left: (path.startX + dx * 0.50) + "px",
+            top: (path.startY + dy * 0.50 + 15) + "px",
+            transform: "translate(-50%, -50%) rotate(1deg)"
         },
 
         {
-            left:
-                (path.startX + dx * 0.92) + "px",
+            left: (path.startX + dx * 0.60) + "px",
+            top: (path.startY + dy * 0.60 + 8) + "px",
+            transform: "translate(-50%, -50%) rotate(0deg)"
+        },
 
-            top:
-                (path.startY + dy * 0.92 + 12) + "px",
+        {
+            left: (path.startX + dx * 0.70) + "px",
+            top: (path.startY + dy * 0.70 - 8) + "px",
+            transform: "translate(-50%, -50%) rotate(-1deg)"
+        },
 
-            transform:
-                "translate(-50%, -50%) rotate(3deg)"
+        {
+            left: (path.startX + dx * 0.80) + "px",
+            top: (path.startY + dy * 0.80 - 15) + "px",
+            transform: "translate(-50%, -50%) rotate(-2deg)"
+        },
+
+        {
+            left: (path.startX + dx * 0.90) + "px",
+            top: (path.startY + dy * 0.90 - 8) + "px",
+            transform: "translate(-50%, -50%) rotate(-1deg)"
         },
 
         {
             left: path.endX + "px",
             top: path.endY + "px",
-
-            transform:
-                "translate(-50%, -50%) rotate(-2deg)"
+            transform: "translate(-50%, -50%) rotate(-2deg)"
         }
-
     ],
-
     {
         duration: 55000,
-        easing: "linear",
+        easing: "ease-in-out",
         fill: "forwards"
     }
 );
