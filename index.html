@@ -2937,82 +2937,49 @@ function startDuckJourney() {
             const dy = path.endY - path.startY;
 
             // Zigzag nhẹ theo đường bay
-            const animation = duck.animate(
+            
+const keyframes = [];
 
- [
-        {
-            left: path.startX + "px",
-            top: path.startY + "px",
-            transform: "translate(-50%, -50%) rotate(-2deg)"
-        },
+const waveCount = 2.5;      // số gợn sóng
+const waveHeight = 35;      // độ cao của sóng
+const points = 60;          // càng nhiều càng mượt
 
-        {
-            left: (path.startX + dx * 0.10) + "px",
-            top: (path.startY + dy * 0.10 - 10) + "px",
-            transform: "translate(-50%, -50%) rotate(-1deg)"
-        },
+for (let i = 0; i <= points; i++) {
 
-        {
-            left: (path.startX + dx * 0.20) + "px",
-            top: (path.startY + dy * 0.20 - 18) + "px",
-            transform: "translate(-50%, -50%) rotate(0deg)"
-        },
+    const progress = i / points;
 
-        {
-            left: (path.startX + dx * 0.30) + "px",
-            top: (path.startY + dy * 0.30 - 10) + "px",
-            transform: "translate(-50%, -50%) rotate(1deg)"
-        },
+    const x = path.startX + dx * progress;
 
-        {
-            left: (path.startX + dx * 0.40) + "px",
-            top: (path.startY + dy * 0.40 + 8) + "px",
-            transform: "translate(-50%, -50%) rotate(2deg)"
-        },
+    const wave =
+        Math.sin(progress * Math.PI * 2 * waveCount)
+        * waveHeight;
 
-        {
-            left: (path.startX + dx * 0.50) + "px",
-            top: (path.startY + dy * 0.50 + 15) + "px",
-            transform: "translate(-50%, -50%) rotate(1deg)"
-        },
+    const y =
+        path.startY +
+        dy * progress +
+        wave;
 
-        {
-            left: (path.startX + dx * 0.60) + "px",
-            top: (path.startY + dy * 0.60 + 8) + "px",
-            transform: "translate(-50%, -50%) rotate(0deg)"
-        },
+    const rotation =
+        Math.sin(progress * Math.PI * 2 * waveCount)
+        * 2.5;
 
-        {
-            left: (path.startX + dx * 0.70) + "px",
-            top: (path.startY + dy * 0.70 - 8) + "px",
-            transform: "translate(-50%, -50%) rotate(-1deg)"
-        },
+    keyframes.push({
+        left: x + "px",
+        top: y + "px",
+        transform:
+            `translate(-50%, -50%) rotate(${rotation}deg)`
+    });
+}
 
-        {
-            left: (path.startX + dx * 0.80) + "px",
-            top: (path.startY + dy * 0.80 - 15) + "px",
-            transform: "translate(-50%, -50%) rotate(-2deg)"
-        },
-
-        {
-            left: (path.startX + dx * 0.90) + "px",
-            top: (path.startY + dy * 0.90 - 8) + "px",
-            transform: "translate(-50%, -50%) rotate(-1deg)"
-        },
-
-        {
-            left: path.endX + "px",
-            top: path.endY + "px",
-            transform: "translate(-50%, -50%) rotate(-2deg)"
-        }
-    ],
+const animation = duck.animate(
+    keyframes,
     {
         duration: 55000,
         easing: "linear",
         fill: "forwards"
     }
 );
-
+            
             // Chỉ xử lý khi vịt ĐÃ bay hết đường
             animation.finished.then(function () {
 
