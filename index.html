@@ -886,6 +886,30 @@ body.started .heart {
 
 }
 
+.universe::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: url("universe.png") center center / cover no-repeat;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.universe.space-mode::before {
+    animation: universeImageIn 4s ease forwards;
+}
+
+@keyframes universeImageIn {
+    from {
+        opacity: 0;
+        transform: scale(1.03);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}    
 
 .universe.show {
 
@@ -3061,6 +3085,9 @@ async function openBirthday() {
         "show"
     );
 
+    await wait(1000);
+universe.classList.add("space-mode");
+    
     signature.style.visibility =
         "hidden";
 
