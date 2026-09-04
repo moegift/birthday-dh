@@ -2,7 +2,6 @@
 <html lang="vi">
 
 <head>
-
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -11,14 +10,10 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
 <title>Happy Birthday DH</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap"
 rel="stylesheet">
-
 
 <style>
 
@@ -51,161 +46,129 @@ body {
 ================================================== */
 
 .background {
-
     position: fixed;
-
     inset: 0;
-
     z-index: 0;
 
     background-image: url("birthday-bg.png");
-
     background-size: cover;
-
     background-position: center;
 
-    transform: scale(1.01);
-
+    transform: scale(1.02);
 }
 
 .background::after {
-
     content: "";
-
     position: absolute;
-
     inset: 0;
 
     background:
     linear-gradient(
         to bottom,
         rgba(0,0,0,0.04),
-        rgba(0,0,0,0.20)
+        rgba(0,0,0,0.22)
     );
-
 }
 
 
 /* ==================================================
-   START SCREEN
+   MỞ THIỆP
 ================================================== */
 
 .start-screen {
-
     position: fixed;
-
     inset: 0;
 
     z-index: 1000;
 
     display: flex;
-
+    justify-content: center;
     align-items: center;
 
-    justify-content: center;
-
-    background:
-    rgba(0,0,0,0.18);
+    background: rgba(0,0,0,0.18);
 
     transition:
-    opacity 0.8s ease,
-    visibility 0.8s ease;
-
+        opacity 0.8s ease,
+        visibility 0.8s ease;
 }
 
 .start-screen.hide {
-
     opacity: 0;
-
     visibility: hidden;
-
     pointer-events: none;
-
 }
 
-
 .open-button {
-
     border: none;
-
     outline: none;
 
     padding: 16px 32px;
 
     border-radius: 999px;
 
-    background:
-    rgba(255,255,255,0.94);
+    background: rgba(255,255,255,0.94);
 
     color: #805040;
 
-    font-family:
-    "Baloo 2",
-    sans-serif;
+    font-family: "Baloo 2", sans-serif;
 
     font-size: 23px;
-
     font-weight: 700;
 
     cursor: pointer;
 
     box-shadow:
-    0 10px 35px
-    rgba(0,0,0,0.28);
+        0 10px 35px rgba(0,0,0,0.28);
 
     animation:
-    buttonPulse
-    1.8s
-    ease-in-out
-    infinite;
-
+        buttonPulse
+        1.8s
+        ease-in-out
+        infinite;
 }
 
 @keyframes buttonPulse {
 
     0%,
     100% {
-
         transform: scale(1);
-
     }
 
     50% {
-
         transform: scale(1.06);
-
     }
-
 }
 
 
 /* ==================================================
-   CONTENT
+   NỘI DUNG
 ================================================== */
 
 .content {
-
     position: fixed;
-
     inset: 0;
 
     z-index: 5;
 
     pointer-events: none;
-
 }
 
 
 /* ==================================================
-   TEXT CHUNG
+   CÁC CÂU CHỮ
+
+   QUAN TRỌNG:
+   Không có animation-delay.
+   Không có animation tự chạy.
+
+   JavaScript sẽ thêm class .show
+   đúng lúc cần hiển thị.
 ================================================== */
 
 .message {
-
     position: absolute;
 
     left: 50%;
-
     top: 50%;
 
     width: 92%;
@@ -217,29 +180,55 @@ body {
     visibility: hidden;
 
     transform:
-    translate(-50%, -50%)
-    scale(0.5);
+        translate(-50%, -50%)
+        scale(0.7);
 
-    font-family:
-    "Baloo 2",
-    sans-serif;
+    font-family: "Baloo 2", sans-serif;
 
     text-shadow:
-    0 5px 18px
-    rgba(0,0,0,0.38);
-
+        0 5px 18px rgba(0,0,0,0.38);
 }
 
 
-/*
-   QUAN TRỌNG:
+/* Khi JS thêm .show */
 
-   Tất cả message ban đầu
-   KHÔNG CÓ animation.
+.message.show {
+    visibility: visible;
 
-   JavaScript sẽ thêm class
-   khi người dùng bấm MỞ THIỆP.
-*/
+    animation:
+        textShow
+        1s
+        ease
+        forwards;
+}
+
+
+@keyframes textShow {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.65);
+    }
+
+    60% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+}
 
 
 /* ==================================================
@@ -249,110 +238,39 @@ body {
 .countdown {
 
     font-size:
-    clamp(85px, 25vw, 180px);
+        clamp(85px, 25vw, 180px);
 
     font-weight: 800;
-
 }
 
 
-/* Khi countdown được kích hoạt */
+/* Countdown biến mất */
 
-body.started .number3 {
-
-    visibility: visible;
-
+.message.hide {
     animation:
-    countdown
-    1s
-    ease
-    0s
-    both;
-
+        textHide
+        0.6s
+        ease
+        forwards;
 }
 
-body.started .number2 {
-
-    visibility: visible;
-
-    animation:
-    countdown
-    1s
-    ease
-    1s
-    both;
-
-}
-
-body.started .number1 {
-
-    visibility: visible;
-
-    animation:
-    countdown
-    1s
-    ease
-    2s
-    both;
-
-}
-
-body.started .dots {
-
-    visibility: visible;
-
-    animation:
-    countdown
-    1s
-    ease
-    3s
-    both;
-
-}
-
-
-@keyframes countdown {
+@keyframes textHide {
 
     0% {
-
-        opacity: 0;
-
-        transform:
-        translate(-50%, -50%)
-        scale(0.25);
-
-    }
-
-    20% {
-
         opacity: 1;
 
         transform:
-        translate(-50%, -50%)
-        scale(1.18);
-
-    }
-
-    65% {
-
-        opacity: 1;
-
-        transform:
-        translate(-50%, -50%)
-        scale(1);
-
+            translate(-50%, -50%)
+            scale(1);
     }
 
     100% {
-
         opacity: 0;
 
         transform:
-        translate(-50%, -50%)
-        scale(1.28);
-
+            translate(-50%, -50%)
+            scale(1.25);
     }
-
 }
 
 
@@ -360,97 +278,14 @@ body.started .dots {
    HAPPY BIRTHDAY
 ================================================== */
 
-body.started .happy {
-
-    visibility: visible;
-
-    animation:
-    happyBirthday
-    3.2s
-    ease
-    4s
-    both;
-
-}
-
 .happy {
 
     font-size:
-    clamp(45px, 11vw, 105px);
+        clamp(45px, 11vw, 105px);
 
     font-weight: 800;
 
     letter-spacing: 2px;
-
-}
-
-
-@keyframes happyBirthday {
-
-    0% {
-
-        opacity: 0;
-
-        transform:
-        translate(-50%, -50%)
-        scale(0.1)
-        rotate(-8deg);
-
-    }
-
-    20% {
-
-        opacity: 1;
-
-        transform:
-        translate(-50%, -50%)
-        scale(1.25)
-        rotate(3deg);
-
-    }
-
-    35% {
-
-        opacity: 1;
-
-        transform:
-        translate(-50%, -50%)
-        scale(0.95)
-        rotate(-2deg);
-
-    }
-
-    50% {
-
-        opacity: 1;
-
-        transform:
-        translate(-50%, -50%)
-        scale(1.05)
-        rotate(0deg);
-
-    }
-
-    75% {
-
-        opacity: 1;
-
-        transform:
-        translate(-50%, -50%)
-        scale(1);
-
-    }
-
-    100% {
-
-        opacity: 0;
-
-        transform:
-        translate(-50%, -50%)
-        scale(1.5);
-
-    }
-
 }
 
 
@@ -461,100 +296,22 @@ body.started .happy {
 .age {
 
     font-size:
-    clamp(58px, 16vw, 140px);
+        clamp(58px, 16vw, 140px);
 
     font-weight: 800;
 
     line-height: 1;
 
-    color: white;
-
     text-shadow:
 
-    0 0 8px
-    rgba(255,255,255,0.95),
+        0 0 8px
+        rgba(255,255,255,0.95),
 
-    0 0 20px
-    rgba(255,220,150,0.85),
+        0 0 20px
+        rgba(255,220,150,0.85),
 
-    0 7px 25px
-    rgba(0,0,0,0.4);
-
-}
-
-
-body.started .age {
-
-    visibility: visible;
-
-    animation:
-    ageAppear
-    3.4s
-    cubic-bezier(.17,.67,.25,1.2)
-    7.6s
-    both;
-
-}
-
-
-@keyframes ageAppear {
-
-    0% {
-
-        opacity: 0;
-
-        transform:
-        translate(-50%, -50%)
-        scale(0.2);
-
-    }
-
-    20% {
-
-        opacity: 1;
-
-        transform:
-        translate(-50%, -50%)
-        scale(1.25);
-
-    }
-
-    35% {
-
-        transform:
-        translate(-50%, -50%)
-        scale(0.9);
-
-    }
-
-    50% {
-
-        transform:
-        translate(-50%, -50%)
-        scale(1.08);
-
-    }
-
-    70% {
-
-        opacity: 1;
-
-        transform:
-        translate(-50%, -50%)
-        scale(1);
-
-    }
-
-    100% {
-
-        opacity: 0;
-
-        transform:
-        translate(-50%, -50%)
-        scale(1.08);
-
-    }
-
+        0 7px 25px
+        rgba(0,0,0,0.4);
 }
 
 
@@ -567,140 +324,31 @@ body.started .age {
 .good {
 
     font-size:
-    clamp(28px, 7vw, 65px);
+        clamp(28px, 7vw, 65px);
 
     font-weight: 700;
 
     line-height: 1.25;
-
 }
-
-
-body.started .today {
-
-    visibility: visible;
-
-    animation:
-    messageInOut
-    3.2s
-    ease
-    11.3s
-    both;
-
-}
-
-
-body.started .deserve {
-
-    visibility: visible;
-
-    animation:
-    messageInOut
-    3.2s
-    ease
-    14.8s
-    both;
-
-}
-
-
-body.started .good {
-
-    visibility: visible;
-
-    animation:
-    messageInOut
-    3.2s
-    ease
-    18.3s
-    both;
-
-}
-
 
 .final {
 
     font-size:
-    clamp(35px, 9vw, 80px);
+        clamp(35px, 9vw, 80px);
 
     font-weight: 800;
 
     line-height: 1.2;
-
-}
-
-
-body.started .final {
-
-    visibility: visible;
-
-    animation:
-    messageInOut
-    4.8s
-    ease
-    21.8s
-    both;
-
-}
-
-
-@keyframes messageInOut {
-
-    0% {
-
-        opacity: 0;
-
-        transform:
-        translate(-50%, -50%)
-        translateY(35px)
-        scale(0.85);
-
-    }
-
-    20% {
-
-        opacity: 1;
-
-        transform:
-        translate(-50%, -50%)
-        translateY(0)
-        scale(1);
-
-    }
-
-    75% {
-
-        opacity: 1;
-
-        transform:
-        translate(-50%, -50%)
-        translateY(0)
-        scale(1);
-
-    }
-
-    100% {
-
-        opacity: 0;
-
-        transform:
-        translate(-50%, -50%)
-        translateY(-35px)
-        scale(1.05);
-
-    }
-
 }
 
 
 /* ==================================================
-   HEARTS
+   TIM BAY
 ================================================== */
 
 .hearts {
 
     position: fixed;
-
     inset: 0;
 
     z-index: 4;
@@ -708,9 +356,7 @@ body.started .final {
     pointer-events: none;
 
     overflow: hidden;
-
 }
-
 
 .heart {
 
@@ -721,106 +367,74 @@ body.started .final {
     opacity: 0;
 
     font-size: 20px;
-
 }
-
 
 body.started .heart {
 
     animation:
-    floatHeart
-    8s
-    linear
-    infinite;
-
+        floatHeart
+        8s
+        linear
+        infinite;
 }
 
-
 .heart:nth-child(1) {
-
     left: 10%;
-
     animation-delay: 1s;
-
 }
 
 .heart:nth-child(2) {
-
     left: 25%;
-
     animation-delay: 3s;
-
 }
 
 .heart:nth-child(3) {
-
     left: 42%;
-
     animation-delay: 5s;
-
 }
 
 .heart:nth-child(4) {
-
     left: 60%;
-
     animation-delay: 2s;
-
 }
 
 .heart:nth-child(5) {
-
     left: 78%;
-
     animation-delay: 4s;
-
 }
 
 .heart:nth-child(6) {
-
     left: 90%;
-
     animation-delay: 6s;
-
 }
-
 
 @keyframes floatHeart {
 
     0% {
-
         opacity: 0;
 
         transform:
-        translateY(0)
-        scale(0.5)
-        rotate(0deg);
-
+            translateY(0)
+            scale(0.5)
+            rotate(0deg);
     }
 
     15% {
-
         opacity: 0.8;
-
     }
 
     80% {
-
         opacity: 0.7;
-
     }
 
     100% {
-
         opacity: 0;
 
         transform:
-        translateY(-110vh)
-        scale(1.3)
-        rotate(30deg);
-
+            translateY(-110vh)
+            scale(1.3)
+            rotate(30deg);
     }
-
 }
 
 
@@ -831,7 +445,6 @@ body.started .heart {
 .universe {
 
     position: fixed;
-
     inset: 0;
 
     z-index: 20;
@@ -840,98 +453,80 @@ body.started .heart {
 
     opacity: 0;
 
+    visibility: hidden;
 }
 
+.universe.show {
 
-body.started .universe {
+    visibility: visible;
 
     animation:
-    universeAppear
-    2.5s
-    ease
-    26.5s
-    forwards;
-
+        universeAppear
+        2.5s
+        ease
+        forwards;
 }
-
 
 @keyframes universeAppear {
 
-    0% {
-
+    from {
         opacity: 0;
 
         background:
-        rgba(0,0,0,0);
-
+            rgba(0,0,0,0);
     }
 
-    100% {
-
+    to {
         opacity: 1;
 
         background:
-        radial-gradient(
-            circle at center,
-            rgba(35,25,60,0.92),
-            rgba(5,5,20,0.98)
-        );
-
+            radial-gradient(
+                circle at center,
+                rgba(35,25,60,0.94),
+                rgba(5,5,20,0.99)
+            );
     }
-
 }
 
 
 /* ==================================================
-   STARS
+   SAO
 ================================================== */
 
 .stars {
 
     position: absolute;
-
     inset: 0;
 
     opacity: 0;
-
 }
 
-
-body.started .stars {
+.universe.show .stars {
 
     animation:
-    starsAppear
-    2s
-    ease
-    27.2s
-    forwards;
-
+        starsAppear
+        2s
+        ease
+        0.7s
+        forwards;
 }
-
 
 @keyframes starsAppear {
 
     from {
-
         opacity: 0;
-
     }
 
     to {
-
         opacity: 1;
-
     }
-
 }
-
 
 .star {
 
     position: absolute;
 
     width: 3px;
-
     height: 3px;
 
     border-radius: 50%;
@@ -939,112 +534,82 @@ body.started .stars {
     background: white;
 
     box-shadow:
-    0 0 8px white;
+        0 0 8px white;
 
     animation:
-    twinkle
-    2s
-    ease-in-out
-    infinite
-    alternate;
-
+        twinkle
+        2s
+        ease-in-out
+        infinite
+        alternate;
 }
 
-
 .star:nth-child(1) {
-
     top: 12%;
     left: 15%;
-
 }
 
 .star:nth-child(2) {
-
     top: 20%;
     left: 72%;
-
 }
 
 .star:nth-child(3) {
-
     top: 35%;
     left: 40%;
-
 }
 
 .star:nth-child(4) {
-
     top: 45%;
     left: 85%;
-
 }
 
 .star:nth-child(5) {
-
     top: 60%;
     left: 12%;
-
 }
 
 .star:nth-child(6) {
-
     top: 70%;
     left: 65%;
-
 }
 
 .star:nth-child(7) {
-
     top: 82%;
     left: 35%;
-
 }
 
 .star:nth-child(8) {
-
     top: 15%;
     left: 50%;
-
 }
 
 .star:nth-child(9) {
-
     top: 75%;
     left: 80%;
-
 }
 
 .star:nth-child(10) {
-
     top: 50%;
     left: 55%;
-
 }
-
 
 @keyframes twinkle {
 
     from {
-
         opacity: 0.25;
-
         transform: scale(0.7);
-
     }
 
     to {
-
         opacity: 1;
-
         transform: scale(1.5);
-
     }
-
 }
 
 
 /* ==================================================
-   VŨ TRỤ TEXT
+   TEXT VŨ TRỤ
 ================================================== */
 
 .universe-text {
@@ -1052,25 +617,26 @@ body.started .stars {
     position: absolute;
 
     left: 50%;
-
     top: 50%;
 
     width: 90%;
 
     opacity: 0;
 
+    visibility: hidden;
+
     text-align: center;
 
     transform:
-    translate(-50%, -50%)
-    scale(0.85);
+        translate(-50%, -50%)
+        scale(0.8);
 
     font-family:
-    "Quicksand",
-    sans-serif;
+        "Quicksand",
+        sans-serif;
 
     font-size:
-    clamp(22px, 5.5vw, 48px);
+        clamp(22px, 5.5vw, 48px);
 
     font-weight: 600;
 
@@ -1080,109 +646,92 @@ body.started .stars {
 
     text-shadow:
 
-    0 0 12px
-    rgba(255,255,255,0.55),
+        0 0 12px
+        rgba(255,255,255,0.55),
 
-    0 5px 20px
-    rgba(0,0,0,0.6);
-
-}
-
-
-body.started .u1 {
-
-    animation:
-    universeText
-    4s
-    ease
-    28s
-    both;
-
-}
-
-
-body.started .u2 {
-
-    animation:
-    universeText
-    4s
-    ease
-    32s
-    both;
-
-}
-
-
-body.started .u3 {
-
-    animation:
-    universeText
-    4s
-    ease
-    36s
-    both;
-
-}
-
-
-body.started .u4 {
-
-    animation:
-    universeText
-    4.5s
-    ease
-    40s
-    both;
-
-}
-
-
-@keyframes universeText {
-
-    0% {
-
-        opacity: 0;
-
-        transform:
-        translate(-50%, -50%)
-        translateY(25px)
-        scale(0.9);
-
-    }
-
-    20% {
-
-        opacity: 1;
-
-        transform:
-        translate(-50%, -50%)
-        translateY(0)
-        scale(1);
-
-    }
-
-    75% {
-
-        opacity: 1;
-
-    }
-
-    100% {
-
-        opacity: 0;
-
-        transform:
-        translate(-50%, -50%)
-        translateY(-25px)
-        scale(1.04);
-
-    }
-
+        0 5px 20px
+        rgba(0,0,0,0.6);
 }
 
 
 /* ==================================================
-   VŨ TRỤ - CÂU CUỐI
+   TEXT VŨ TRỤ KHI HIỆN
+================================================== */
+
+.universe-text.show {
+
+    visibility: visible;
+
+    animation:
+        universeTextIn
+        1.2s
+        ease
+        forwards;
+}
+
+@keyframes universeTextIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            translateY(25px)
+            scale(0.9);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* ==================================================
+   TEXT VŨ TRỤ KHI ẨN
+================================================== */
+
+.universe-text.fade {
+
+    animation:
+        universeTextOut
+        1s
+        ease
+        forwards;
+}
+
+@keyframes universeTextOut {
+
+    from {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            translateY(0)
+            scale(1);
+    }
+
+    to {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            translateY(-25px)
+            scale(1.04);
+    }
+}
+
+
+/* ==================================================
+   CÂU CUỐI VŨ TRỤ
 ================================================== */
 
 .universe-final {
@@ -1190,25 +739,26 @@ body.started .u4 {
     position: absolute;
 
     left: 50%;
-
     top: 50%;
 
     width: 90%;
 
     opacity: 0;
 
+    visibility: hidden;
+
     text-align: center;
 
     transform:
-    translate(-50%, -50%)
-    scale(0.7);
+        translate(-50%, -50%)
+        scale(0.7);
 
     font-family:
-    "Baloo 2",
-    sans-serif;
+        "Baloo 2",
+        sans-serif;
 
     font-size:
-    clamp(30px, 7vw, 65px);
+        clamp(30px, 7vw, 65px);
 
     font-weight: 700;
 
@@ -1218,78 +768,48 @@ body.started .u4 {
 
     text-shadow:
 
-    0 0 15px
-    rgba(255,255,255,0.6),
+        0 0 15px
+        rgba(255,255,255,0.6),
 
-    0 5px 25px
-    rgba(0,0,0,0.6);
-
+        0 5px 25px
+        rgba(0,0,0,0.6);
 }
 
+.universe-final.show {
 
-body.started .universe-final {
+    visibility: visible;
 
     animation:
-    finalUniverse
-    6s
-    ease
-    44.5s
-    both;
-
+        finalUniverse
+        1.5s
+        ease
+        forwards;
 }
-
 
 @keyframes finalUniverse {
 
-    0% {
+    from {
 
         opacity: 0;
 
         transform:
-        translate(-50%, -50%)
-        scale(0.7);
-
+            translate(-50%, -50%)
+            scale(0.7);
     }
 
-    18% {
+    to {
 
         opacity: 1;
 
         transform:
-        translate(-50%, -50%)
-        scale(1.05);
-
+            translate(-50%, -50%)
+            scale(1);
     }
-
-    30% {
-
-        transform:
-        translate(-50%, -50%)
-        scale(1);
-
-    }
-
-    75% {
-
-        opacity: 1;
-
-    }
-
-    100% {
-
-        opacity: 0;
-
-        transform:
-        translate(-50%, -50%)
-        scale(1.05);
-
-    }
-
 }
 
 
 /* ==================================================
-   CHỮ KÝ CUỐI
+   CHỮ KÝ
 ================================================== */
 
 .signature {
@@ -1297,101 +817,81 @@ body.started .universe-final {
     position: fixed;
 
     left: 50%;
-
     bottom: 9%;
 
     z-index: 30;
 
     opacity: 0;
 
+    visibility: hidden;
+
     text-align: center;
 
     transform:
-    translateX(-50%)
-    scale(0.7);
+        translateX(-50%)
+        scale(0.7);
 
     font-family:
-    "Baloo 2",
-    sans-serif;
-
+        "Baloo 2",
+        sans-serif;
 }
 
+.signature.show {
 
-body.started .signature {
+    visibility: visible;
 
     animation:
-    signatureAppear
-    3s
-    ease
-    51s
-    forwards;
-
+        signatureAppear
+        1.5s
+        ease
+        forwards;
 }
-
 
 .signature-name {
 
     font-size:
-    clamp(35px, 9vw, 75px);
+        clamp(35px, 9vw, 75px);
 
     font-weight: 800;
-
 }
-
 
 .signature-birthday {
 
     margin-top: 5px;
 
     font-family:
-    "Quicksand",
-    sans-serif;
+        "Quicksand",
+        sans-serif;
 
     font-size:
-    clamp(16px, 4vw, 25px);
+        clamp(16px, 4vw, 25px);
 
     font-weight: 600;
 
     letter-spacing: 2px;
-
 }
-
 
 @keyframes signatureAppear {
 
-    0% {
+    from {
 
         opacity: 0;
 
         transform:
-        translateX(-50%)
-        translateY(20px)
-        scale(0.7);
-
+            translateX(-50%)
+            translateY(20px)
+            scale(0.7);
     }
 
-    30% {
+    to {
 
         opacity: 1;
 
         transform:
-        translateX(-50%)
-        translateY(0)
-        scale(1);
-
+            translateX(-50%)
+            translateY(0)
+            scale(1);
     }
-
-    100% {
-
-        opacity: 1;
-
-        transform:
-        translateX(-50%)
-        translateY(0)
-        scale(1);
-
-    }
-
 }
 
 
@@ -1404,21 +904,18 @@ body.started .signature {
     position: fixed;
 
     right: 18px;
-
     top: 18px;
 
     z-index: 100;
 
     width: 44px;
-
     height: 44px;
 
     border: none;
-
     border-radius: 50%;
 
     background:
-    rgba(255,255,255,0.82);
+        rgba(255,255,255,0.82);
 
     color: #754839;
 
@@ -1429,16 +926,13 @@ body.started .signature {
     opacity: 0;
 
     pointer-events: none;
-
 }
-
 
 .music-button.show {
 
     opacity: 1;
 
     pointer-events: auto;
-
 }
 
 
@@ -1451,21 +945,18 @@ body.started .signature {
     position: fixed;
 
     right: 18px;
-
     bottom: 18px;
 
     z-index: 100;
 
     width: 46px;
-
     height: 46px;
 
     border: none;
-
     border-radius: 50%;
 
     background:
-    rgba(255,255,255,0.82);
+        rgba(255,255,255,0.82);
 
     color: #754839;
 
@@ -1476,16 +967,13 @@ body.started .signature {
     opacity: 0;
 
     pointer-events: none;
-
 }
-
 
 .fullscreen-button.show {
 
     opacity: 1;
 
     pointer-events: auto;
-
 }
 
 
@@ -1500,90 +988,26 @@ body.started .signature {
         font-size: 21px;
 
         padding:
-        14px 28px;
-
+            14px 28px;
     }
 
     .message {
 
         width: 94%;
-
     }
 
     .universe-text {
 
         width: 90%;
-
     }
 
-}
+    .signature {
 
-
-/* ==================================================
-   TRƯỚC KHI BẤM MỞ THIỆP
-   ĐẢM BẢO KHÔNG CÓ GÌ CHẠY
-================================================== */
-
-body:not(.started) .message {
-
-    animation: none !important;
-
-    opacity: 0 !important;
-
-    visibility: hidden !important;
-
-}
-
-body:not(.started) .universe {
-
-    animation: none !important;
-
-    opacity: 0 !important;
-
-}
-
-body:not(.started) .stars {
-
-    animation: none !important;
-
-    opacity: 0 !important;
-
-}
-
-body:not(.started) .universe-text {
-
-    animation: none !important;
-
-    opacity: 0 !important;
-
-}
-
-body:not(.started) .universe-final {
-
-    animation: none !important;
-
-    opacity: 0 !important;
-
-}
-
-body:not(.started) .signature {
-
-    animation: none !important;
-
-    opacity: 0 !important;
-
-}
-
-body:not(.started) .heart {
-
-    animation: none !important;
-
-    opacity: 0 !important;
-
+        bottom: 10%;
+    }
 }
 
 </style>
-
 </head>
 
 
@@ -1602,12 +1026,12 @@ body:not(.started) .heart {
 ================================================== -->
 
 <div
-class="start-screen"
-id="startScreen">
+    class="start-screen"
+    id="startScreen">
 
     <button
-    class="open-button"
-    id="openButton">
+        class="open-button"
+        id="openButton">
 
         MỞ THIỆP ♡
 
@@ -1621,71 +1045,111 @@ id="startScreen">
 ================================================== -->
 
 <audio
-id="birthdayMusic"
-loop
-preload="auto">
+    id="birthdayMusic"
+    loop
+    preload="auto">
 
     <source
-    src="vu-tru-song-song.mp3"
-    type="audio/mpeg">
+        src="vu-tru-song-song.mp3"
+        type="audio/mpeg">
 
 </audio>
 
 
 <!-- ==================================================
-     NỘI DUNG CHÍNH
+     NỘI DUNG
 ================================================== -->
 
 <div class="content">
 
 
-    <div class="message countdown number3">
+    <div
+        class="message countdown"
+        id="number3">
+
         3
+
     </div>
 
 
-    <div class="message countdown number2">
+    <div
+        class="message countdown"
+        id="number2">
+
         2
+
     </div>
 
 
-    <div class="message countdown number1">
+    <div
+        class="message countdown"
+        id="number1">
+
         1
+
     </div>
 
 
-    <div class="message countdown dots">
+    <div
+        class="message countdown"
+        id="dots">
+
         ...
+
     </div>
 
 
-    <div class="message happy">
+    <div
+        class="message happy"
+        id="happy">
+
         HAPPY BIRTHDAY
+
     </div>
 
 
-    <div class="message age">
+    <div
+        class="message age"
+        id="age">
+
         DH 20 tuổi
+
     </div>
 
 
-    <div class="message today">
+    <div
+        class="message today"
+        id="today">
+
         Hôm nay là ngày đặc biệt của e
+
     </div>
 
 
-    <div class="message deserve">
+    <div
+        class="message deserve"
+        id="deserve">
+
         em xứng đáng với
+
     </div>
 
 
-    <div class="message good">
+    <div
+        class="message good"
+        id="good">
+
         những điều tốt đẹp nhất
+
     </div>
 
 
-    <div class="message final">
+    <div
+        class="message final"
+        id="final">
+
         best wishes for you
+
     </div>
 
 
@@ -1699,15 +1163,10 @@ preload="auto">
 <div class="hearts">
 
     <div class="heart">♡</div>
-
     <div class="heart">♡</div>
-
     <div class="heart">♡</div>
-
     <div class="heart">♡</div>
-
     <div class="heart">♡</div>
-
     <div class="heart">♡</div>
 
 </div>
@@ -1717,76 +1176,73 @@ preload="auto">
      VŨ TRỤ
 ================================================== -->
 
-<div class="universe">
+<div
+    class="universe"
+    id="universe">
 
 
     <div class="stars">
 
         <div class="star"></div>
-
         <div class="star"></div>
-
         <div class="star"></div>
-
         <div class="star"></div>
-
         <div class="star"></div>
-
         <div class="star"></div>
-
         <div class="star"></div>
-
         <div class="star"></div>
-
         <div class="star"></div>
-
         <div class="star"></div>
 
     </div>
 
 
-    <div class="universe-text u1">
+    <div
+        class="universe-text"
+        id="u1">
 
         20 tuổi rồi...
 
     </div>
 
 
-    <div class="universe-text u2">
+    <div
+        class="universe-text"
+        id="u2">
 
         Mong em đừng vội lớn quá.<br>
-
         Cứ vui khi em muốn vui.<br>
-
         Cứ khóc khi em cần khóc.
 
     </div>
 
 
-    <div class="universe-text u3">
+    <div
+        class="universe-text"
+        id="u3">
 
         Và nếu có một ngày<br>
-
         em thấy mệt...
 
     </div>
 
 
-    <div class="universe-text u4">
+    <div
+        class="universe-text"
+        id="u4">
 
         hãy nhớ rằng em vẫn luôn<br>
-
         xứng đáng với những điều<br>
-
         dịu dàng nhất.
 
     </div>
 
 
-    <div class="universe-final">
+    <div
+        class="universe-final"
+        id="universeFinal">
 
         Ở bất kỳ vũ trụ nào...<br>
-
         em cũng luôn được yêu thương. ♡
 
     </div>
@@ -1799,14 +1255,20 @@ preload="auto">
      CHỮ KÝ
 ================================================== -->
 
-<div class="signature">
+<div
+    class="signature"
+    id="signature">
 
     <div class="signature-name">
+
         DH ♡
+
     </div>
 
     <div class="signature-birthday">
+
         HAPPY 20TH BIRTHDAY
+
     </div>
 
 </div>
@@ -1817,8 +1279,8 @@ preload="auto">
 ================================================== -->
 
 <button
-class="music-button"
-id="musicButton">
+    class="music-button"
+    id="musicButton">
 
     ♪
 
@@ -1830,8 +1292,8 @@ id="musicButton">
 ================================================== -->
 
 <button
-class="fullscreen-button"
-id="fullscreenButton">
+    class="fullscreen-button"
+    id="fullscreenButton">
 
     ⛶
 
@@ -1844,36 +1306,82 @@ id="fullscreenButton">
    LẤY ELEMENT
 ================================================== */
 
-const body =
-document.body;
-
 const startScreen =
-document.getElementById("startScreen");
+    document.getElementById("startScreen");
 
 const openButton =
-document.getElementById("openButton");
+    document.getElementById("openButton");
 
 const music =
-document.getElementById("birthdayMusic");
+    document.getElementById("birthdayMusic");
 
 const musicButton =
-document.getElementById("musicButton");
+    document.getElementById("musicButton");
 
 const fullscreenButton =
-document.getElementById("fullscreenButton");
+    document.getElementById("fullscreenButton");
+
+const universe =
+    document.getElementById("universe");
+
+const signature =
+    document.getElementById("signature");
 
 
 /* ==================================================
-   TRẠNG THÁI BAN ĐẦU
+   CÁC TEXT
 ================================================== */
 
-/*
-   Khi trang vừa mở:
+const number3 =
+    document.getElementById("number3");
 
-   - Không phát nhạc
-   - Đưa nhạc về đầu
-   - Chưa thêm class started
-*/
+const number2 =
+    document.getElementById("number2");
+
+const number1 =
+    document.getElementById("number1");
+
+const dots =
+    document.getElementById("dots");
+
+const happy =
+    document.getElementById("happy");
+
+const age =
+    document.getElementById("age");
+
+const today =
+    document.getElementById("today");
+
+const deserve =
+    document.getElementById("deserve");
+
+const good =
+    document.getElementById("good");
+
+const finalText =
+    document.getElementById("final");
+
+
+const u1 =
+    document.getElementById("u1");
+
+const u2 =
+    document.getElementById("u2");
+
+const u3 =
+    document.getElementById("u3");
+
+const u4 =
+    document.getElementById("u4");
+
+const universeFinal =
+    document.getElementById("universeFinal");
+
+
+/* ==================================================
+   ĐẢM BẢO NHẠC TẮT KHI TRANG MỚI MỞ
+================================================== */
 
 music.pause();
 
@@ -1881,80 +1389,37 @@ music.currentTime = 0;
 
 
 /* ==================================================
-   BẤM MỞ THIỆP
+   HÀM CHỜ
 ================================================== */
 
-openButton.addEventListener(
-"click",
-async function () {
+function wait(ms) {
+
+    return new Promise(
+        resolve => setTimeout(resolve, ms)
+    );
+
+}
 
 
-    /*
-       Đây là thời điểm duy nhất
-       bắt đầu toàn bộ thiệp.
-    */
+/* ==================================================
+   HIỆN TEXT
+================================================== */
 
-    body.classList.add("started");
+async function showText(element, duration) {
 
+    element.classList.remove("hide");
 
-    /* ----------------------------------------------
-       PHÁT NHẠC
-    ---------------------------------------------- */
+    element.classList.add("show");
 
-    music.volume = 0.45;
+    await wait(duration);
 
-    try {
+    element.classList.remove("show");
 
-        await music.play();
+    element.classList.add("hide");
 
-        musicButton.classList.add("show");
+    await wait(600);
 
-        musicButton.textContent = "♪";
-
-    }
-
-    catch(error) {
-
-        console.log(
-            "Không thể tự phát nhạc:",
-            error
-        );
-
-        musicButton.classList.add("show");
-
-    }
-
-
-    /* ----------------------------------------------
-       FULLSCREEN
-    ---------------------------------------------- */
-
-    try {
-
-        await enterFullscreen();
-
-    }
-
-    catch(error) {
-
-        console.log(
-            "Fullscreen không khả dụng:",
-            error
-        );
-
-        fullscreenButton.classList.add("show");
-
-    }
-
-
-    /* ----------------------------------------------
-       ẨN MÀN HÌNH MỞ THIỆP
-    ---------------------------------------------- */
-
-    startScreen.classList.add("hide");
-
-
-});
+}
 
 
 /* ==================================================
@@ -1964,12 +1429,10 @@ async function () {
 async function enterFullscreen() {
 
     const element =
-    document.documentElement;
+        document.documentElement;
 
 
-    if (
-        element.requestFullscreen
-    ) {
+    if (element.requestFullscreen) {
 
         await element.requestFullscreen();
 
@@ -1978,9 +1441,7 @@ async function enterFullscreen() {
     }
 
 
-    if (
-        element.webkitRequestFullscreen
-    ) {
+    if (element.webkitRequestFullscreen) {
 
         element.webkitRequestFullscreen();
 
@@ -1989,9 +1450,7 @@ async function enterFullscreen() {
     }
 
 
-    if (
-        element.msRequestFullscreen
-    ) {
+    if (element.msRequestFullscreen) {
 
         element.msRequestFullscreen();
 
@@ -2008,103 +1467,240 @@ async function enterFullscreen() {
 
 
 /* ==================================================
-   NÚT FULLSCREEN
+   CHẠY TOÀN BỘ THIỆP
 ================================================== */
 
-fullscreenButton.addEventListener(
-"click",
-async function () {
+async function startBirthday() {
+
+
+    /*
+       Chỉ đến đây khi người dùng
+       THỰC SỰ bấm MỞ THIỆP.
+    */
+
+    document.body.classList.add("started");
+
+
+    /* =================================================
+       1. PHÁT NHẠC
+    ================================================= */
+
+    music.volume = 0.45;
 
 
     try {
 
+        await music.play();
 
-        if (
-            !document.fullscreenElement
-        ) {
-
-            await enterFullscreen();
-
-        }
-
-        else {
-
-
-            if (
-                document.exitFullscreen
-            ) {
-
-                await document.exitFullscreen();
-
-            }
-
-        }
-
+        musicButton.classList.add("show");
 
     }
 
     catch(error) {
 
         console.log(
-            "Lỗi fullscreen:",
+            "Không thể phát nhạc:",
             error
         );
 
+        musicButton.classList.add("show");
+
     }
 
 
-});
+    /* =================================================
+       2. FULLSCREEN
+    ================================================= */
+
+    try {
+
+        await enterFullscreen();
+
+    }
+
+    catch(error) {
+
+        console.log(
+            "Không thể fullscreen:",
+            error
+        );
+
+        fullscreenButton.classList.add("show");
+
+    }
+
+
+    /* =================================================
+       3. ẨN NÚT MỞ THIỆP
+    ================================================= */
+
+    startScreen.classList.add("hide");
+
+
+    /*
+       Đợi màn hình mở thiệp biến mất
+    */
+
+    await wait(800);
+
+
+    /* =================================================
+       4. COUNTDOWN
+    ================================================= */
+
+    await showText(number3, 700);
+
+    await showText(number2, 700);
+
+    await showText(number1, 700);
+
+    await showText(dots, 700);
+
+
+    /* =================================================
+       5. HAPPY BIRTHDAY
+    ================================================= */
+
+    await showText(happy, 2200);
+
+
+    /* =================================================
+       6. DH 20 TUỔI
+    ================================================= */
+
+    await showText(age, 2200);
+
+
+    /* =================================================
+       7. HÔM NAY
+    ================================================= */
+
+    await showText(today, 2200);
+
+
+    /* =================================================
+       8. EM XỨNG ĐÁNG
+    ================================================= */
+
+    await showText(deserve, 2200);
+
+
+    /* =================================================
+       9. NHỮNG ĐIỀU TỐT ĐẸP
+    ================================================= */
+
+    await showText(good, 2200);
+
+
+    /* =================================================
+       10. BEST WISHES
+    ================================================= */
+
+    await showText(finalText, 3200);
+
+
+    /* =================================================
+       11. VŨ TRỤ BẮT ĐẦU
+    ================================================= */
+
+    universe.classList.add("show");
+
+    await wait(2500);
+
+
+    /* =================================================
+       12. 20 TUỔI RỒI
+    ================================================= */
+
+    u1.classList.add("show");
+
+    await wait(3000);
+
+    u1.classList.remove("show");
+    u1.classList.add("fade");
+
+    await wait(1000);
+
+
+    /* =================================================
+       13. ĐỪNG VỘI LỚN
+    ================================================= */
+
+    u2.classList.remove("fade");
+
+    u2.classList.add("show");
+
+    await wait(3000);
+
+    u2.classList.remove("show");
+    u2.classList.add("fade");
+
+    await wait(1000);
+
+
+    /* =================================================
+       14. NẾU CÓ MỘT NGÀY
+    ================================================= */
+
+    u3.classList.remove("fade");
+
+    u3.classList.add("show");
+
+    await wait(3000);
+
+    u3.classList.remove("show");
+    u3.classList.add("fade");
+
+    await wait(1000);
+
+
+    /* =================================================
+       15. XỨNG ĐÁNG VỚI ĐIỀU DỊU DÀNG
+    ================================================= */
+
+    u4.classList.remove("fade");
+
+    u4.classList.add("show");
+
+    await wait(3500);
+
+    u4.classList.remove("show");
+    u4.classList.add("fade");
+
+    await wait(1000);
+
+
+    /* =================================================
+       16. CÂU CUỐI
+    ================================================= */
+
+    universeFinal.classList.add("show");
+
+    await wait(4500);
+
+
+    /* =================================================
+       17. CHỮ KÝ
+    ================================================= */
+
+    signature.classList.add("show");
+
+}
 
 
 /* ==================================================
-   THEO DÕI FULLSCREEN
+   QUAN TRỌNG NHẤT:
+   CHỈ CLICK MỚI CHẠY
 ================================================== */
 
-document.addEventListener(
-"fullscreenchange",
-function () {
+openButton.addEventListener(
+    "click",
+    function() {
 
-
-    /*
-       Nếu đang fullscreen
-       thì ẩn nút.
-    */
-
-    if (
-        document.fullscreenElement
-    ) {
-
-        fullscreenButton.classList.remove(
-            "show"
-        );
+        startBirthday();
 
     }
-
-
-    /*
-       Nếu thoát fullscreen
-       thì hiện nút lại.
-    */
-
-    else {
-
-
-        if (
-            body.classList.contains(
-                "started"
-            )
-        ) {
-
-            fullscreenButton.classList.add(
-                "show"
-            );
-
-        }
-
-    }
-
-
-});
+);
 
 
 /* ==================================================
@@ -2112,39 +1708,109 @@ function () {
 ================================================== */
 
 musicButton.addEventListener(
-"click",
-function () {
+    "click",
+    function() {
 
 
-    if (
-        music.paused
-    ) {
+        if (music.paused) {
+
+            music.play();
+
+            musicButton.textContent = "♪";
+
+        }
+
+        else {
+
+            music.pause();
+
+            musicButton.textContent = "🔇";
+
+        }
+
+    }
+);
 
 
-        music.play();
+/* ==================================================
+   NÚT FULLSCREEN
+================================================== */
 
-        musicButton.textContent = "♪";
+fullscreenButton.addEventListener(
+    "click",
+    async function() {
+
+
+        try {
+
+
+            if (!document.fullscreenElement) {
+
+                await enterFullscreen();
+
+            }
+
+            else {
+
+                if (document.exitFullscreen) {
+
+                    await document.exitFullscreen();
+
+                }
+
+            }
+
+
+        }
+
+        catch(error) {
+
+            console.log(error);
+
+        }
 
 
     }
+);
 
-    else {
+
+/* ==================================================
+   FULLSCREEN CHANGE
+================================================== */
+
+document.addEventListener(
+    "fullscreenchange",
+    function() {
 
 
-        music.pause();
+        if (document.fullscreenElement) {
 
-        musicButton.textContent = "🔇";
+            fullscreenButton.classList.remove(
+                "show"
+            );
 
+        }
+
+        else {
+
+            if (
+                document.body.classList.contains(
+                    "started"
+                )
+            ) {
+
+                fullscreenButton.classList.add(
+                    "show"
+                );
+
+            }
+
+        }
 
     }
-
-
-});
-
+);
 
 </script>
 
-
 </body>
-
 </html>
