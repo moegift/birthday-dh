@@ -417,19 +417,20 @@ audio {
    CÁC CÂU CHÍNH
 ===================================================== */
 
-.today,
-.deserve,
-.good {
-
-    font-size:
-        clamp(28px, 7vw, 65px);
-
+.today {
+    font-size: clamp(24px, 6vw, 58px);
     font-weight: 700;
-
     line-height: 1.25;
-
+    width: 96%;
+    white-space: nowrap;
 }
 
+.deserve,
+.good {
+    font-size: clamp(28px, 7vw, 65px);
+    font-weight: 700;
+    line-height: 1.25;
+}
 
 /* =====================================================
    BEST WISHES
@@ -1096,12 +1097,28 @@ body.started .heart {
 ===================================================== */
 
 .signature {
-
     position: fixed;
 
     left: 50%;
+    top: 50%;
 
-    bottom: 9%;
+    z-index: 50;
+
+    width: 90%;
+
+    text-align: center;
+
+    visibility: hidden;
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.7);
+
+    font-family:
+        "Baloo 2",
+        sans-serif;
+}
 
     z-index: 50;
 
@@ -1181,25 +1198,21 @@ body.started .heart {
 @keyframes signatureAppear {
 
     from {
-
         opacity: 0;
 
         transform:
-            translateX(-50%)
+            translate(-50%, -50%)
             translateY(20px)
             scale(0.7);
-
     }
 
     to {
-
         opacity: 1;
 
         transform:
-            translateX(-50%)
+            translate(-50%, -50%)
             translateY(0)
             scale(1);
-
     }
 
 }
