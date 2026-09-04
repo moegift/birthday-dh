@@ -899,20 +899,58 @@ body.started .heart {
 
 .universe.space-mode .duck-floating {
     animation:
-        duckFloatingIn 2s ease 2s forwards,
-        duckFloat 4s ease-in-out 4s infinite;
+        duckAppear 2s ease 2s forwards,
+        duckRoam 18s ease-in-out 4s infinite alternate;
 }
 
-@keyframes duckFloatingIn {
+@keyframes duckAppear {
     from {
         opacity: 0;
-        transform: translate(-50%, -45%) scale(0.9);
     }
 
     to {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
     }
+}
+
+@keyframes duckRoam {
+
+    0% {
+        left: 12%;
+        top: 72%;
+        transform: rotate(-4deg);
+    }
+
+    20% {
+        left: 28%;
+        top: 30%;
+        transform: rotate(5deg);
+    }
+
+    40% {
+        left: 58%;
+        top: 68%;
+        transform: rotate(-3deg);
+    }
+
+    60% {
+        left: 78%;
+        top: 25%;
+        transform: rotate(4deg);
+    }
+
+    80% {
+        left: 48%;
+        top: 18%;
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        left: 82%;
+        top: 75%;
+        transform: rotate(3deg);
+    }
+
 }
 
 @keyframes duckFloat {
@@ -936,7 +974,7 @@ body.started .heart {
 }
 
 .universe.space-mode::before {
-    animation: universeImageIn 4s ease forwards;
+    animation: universeImageIn 6s ease-in-out forwards;
 }
 
 @keyframes universeImageIn {
@@ -3120,32 +3158,29 @@ async function openBirthday() {
        CUỐI CÙNG MỚI HIỆN DH
     ================================================== */
 
-    signature.classList.remove(
-        "show"
-    );
+  signature.classList.remove("show");
 
-    await wait(1000);
+signature.style.visibility = "hidden";
+signature.style.opacity = "0";
+
+void signature.offsetWidth;
+
+signature.style.visibility = "visible";
+signature.classList.add("show");
+
+/* GIỮ CHỮ DH TRÊN MÀN HÌNH */
+await wait(4500);
+
+/* CHO DH BIẾN MẤT */
+signature.classList.remove("show");
+
+await wait(1200);
+
+/* SAU KHI DH BIẾN MẤT HOÀN TOÀN */
+signature.style.visibility = "hidden";
+signature.style.opacity = "0";
+
 universe.classList.add("space-mode");
-    
-    signature.style.visibility =
-        "hidden";
-
-    signature.style.opacity =
-        "0";
-
-
-    void signature.offsetWidth;
-
-
-    signature.style.visibility =
-        "visible";
-
-    signature.classList.add(
-        "show"
-    );
-
-}
-
 
 /* ==================================================
    NÚT NHẠC
