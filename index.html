@@ -530,8 +530,8 @@ audio {
 
     animation:
         happyGlow
-    2s
-    ease-in-out
+    1.4s
+    cubic-bezier(0.22, 1, 0.36, 1)
     forwards;
 
 }
@@ -633,35 +633,19 @@ audio {
 
 @keyframes happyGlow {
 
-   0% {
+    0% {
         opacity: 0;
-        transform: scale(0.65);
-        filter: brightness(0.7);
-
-        text-shadow:
-            0 0 0 transparent;
+        transform: scale(0.92);
     }
 
-    55% {
+    60% {
         opacity: 1;
-        transform: scale(1.08);
-        filter: brightness(1.7);
-
-        text-shadow:
-            0 0 12px white,
-            0 0 28px rgba(255,225,170,0.95),
-            0 0 50px rgba(255,205,130,0.7);
+        transform: scale(1.02);
     }
 
     100% {
         opacity: 1;
         transform: scale(1);
-        filter: brightness(1.05);
-
-        text-shadow:
-            0 0 8px rgba(255,255,255,0.85),
-            0 0 18px rgba(255,225,170,0.75),
-            0 0 30px rgba(255,205,130,0.45);
     }
 
 }
