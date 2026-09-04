@@ -889,22 +889,22 @@ body.started .heart {
 .duck-floating {
     position: absolute;
     width: 180px;
-    left: 50%;
-    top: 55%;
-    transform: translate(-50%, -50%);
     z-index: 5;
     opacity: 0;
     pointer-events: none;
 }
 
+
+/* =========================================
+   VỊT TRÔI TRONG VŨ TRỤ
+========================================= */
+
 .universe.space-mode .duck-floating {
-    animation:
-        duckAppear 4s ease forwards,
-        duckFloat 50s linear 4s infinite;
+    animation: duckAppear 3s ease forwards;
 }
 
 
-/* Vịt hiện ra thật chậm */
+/* Vịt hiện ra */
 @keyframes duckAppear {
     from {
         opacity: 0;
@@ -912,46 +912,6 @@ body.started .heart {
 
     to {
         opacity: 1;
-    }
-}
-
-
-/* Trôi vô định trong vũ trụ */
-@keyframes duckFloat {
-    0% {
-        transform: translate(-80px, 30px) rotate(-2deg);
-    }
-
-    12% {
-        transform: translate(-35px, 5px) rotate(1deg);
-    }
-
-    25% {
-        transform: translate(20px, -25px) rotate(2deg);
-    }
-
-    38% {
-        transform: translate(75px, -5px) rotate(-1deg);
-    }
-
-    50% {
-        transform: translate(110px, 35px) rotate(2deg);
-    }
-
-    63% {
-        transform: translate(65px, 65px) rotate(-2deg);
-    }
-
-    76% {
-        transform: translate(-5px, 45px) rotate(-1deg);
-    }
-
-    88% {
-        transform: translate(-65px, 15px) rotate(2deg);
-    }
-
-    100% {
-        transform: translate(-80px, 30px) rotate(-2deg);
     }
 }
     
@@ -2885,7 +2845,168 @@ async function showUniverseFinal() {
 /* ==================================================
    HÀM MỞ THIỆP
 ================================================== */
+function startDuckJourney() {
 
+    const duck = document.querySelector(".duck-floating");
+
+    if (!duck) return;
+
+    const journeys = [
+        // Trái dưới → phải trên
+        {
+            startX: -220,
+            startY: window.innerHeight * 0.78,
+            endX: window.innerWidth + 220,
+            endY: -180
+        },
+
+        // Trái trên → phải dưới
+        {
+            startX: -220,
+            startY: window.innerHeight * 0.18,
+            endX: window.innerWidth + 220,
+            endY: window.innerHeight * 0.82
+        },
+
+        // Dưới trái → trên phải
+        {
+            startX: window.innerWidth * 0.12,
+            startY: window.innerHeight + 220,
+            endX: window.innerWidth * 0.88,
+            endY: -220
+        },
+
+        // Trên trái → dưới phải
+        {
+            startX: window.innerWidth * 0.08,
+            startY: -220,
+            endX: window.innerWidth * 0.92,
+            endY: window.innerHeight + 220
+        },
+
+        // Phải dưới → trái trên
+        {
+            startX: window.innerWidth + 220,
+            startY: window.innerHeight * 0.82,
+            endX: -220,
+            endY: window.innerHeight * 0.18
+        },
+
+        // Phải trên → trái dưới
+        {
+            startX: window.innerWidth + 220,
+            startY: window.innerHeight * 0.18,
+            endX: -220,
+            endY: window.innerHeight * 0.82
+        }
+    ];
+
+    let journeyIndex = Math.floor(Math.random() * journeys.length);
+
+    function flyDuck() {
+
+        const path = journeys[journeyIndex];
+
+        journeyIndex = (journeyIndex + 1) % journeys.length;
+
+        duck.style.animation = "none";
+        duck.style.opacity = "0";
+
+        void duck.offsetWidth;
+
+        duck.style.left = path.startX + "px";
+        duck.style.top = path.startY + "px";
+
+        duck.style.transform = "translate(-50%, -50%) rotate(0deg)";
+
+        setTimeout(function () {
+
+            duck.style.opacity = "1";
+
+            duck.animate(
+                [
+                    {
+                        left: path.startX + "px",
+                        top: path.startY + "px",
+                        transform: "translate(-50%, -50%) rotate(-3deg)"
+                    },
+
+                    {
+                        left:
+                            (path.startX +
+                            (path.endX - path.startX) * 0.22) + "px",
+
+                        top:
+                            (path.startY +
+                            (path.endY - path.startY) * 0.22 -
+                            45) + "px",
+
+                        transform:
+                            "translate(-50%, -50%) rotate(2deg)"
+                    },
+
+                    {
+                        left:
+                            (path.startX +
+                            (path.endX - path.startX) * 0.45) + "px",
+
+                        top:
+                            (path.startY +
+                            (path.endY - path.startY) * 0.45 +
+                            35) + "px",
+
+                        transform:
+                            "translate(-50%, -50%) rotate(-2deg)"
+                    },
+
+                    {
+                        left:
+                            (path.startX +
+                            (path.endX - path.startX) * 0.68) + "px",
+
+                        top:
+                            (path.startY +
+                            (path.endY - path.startY) * 0.68 -
+                            30) + "px",
+
+                        transform:
+                            "translate(-50%, -50%) rotate(2deg)"
+                    },
+
+                    {
+                        left: path.endX + "px",
+                        top: path.endY + "px",
+                        transform:
+                            "translate(-50%, -50%) rotate(-2deg)"
+                    }
+                ],
+                {
+                    duration: 30000,
+                    easing: "ease-in-out",
+                    fill: "forwards"
+                }
+            );
+
+            setTimeout(function () {
+
+                duck.style.opacity = "0";
+
+                // Nghỉ một chút trước khi xuất hiện
+                setTimeout(function () {
+                    flyDuck();
+                }, 3500);
+
+            }, 30000);
+
+        }, 800);
+
+    }
+
+    // Đợi vũ trụ hiện lên rồi mới cho vịt bay
+    setTimeout(function () {
+        flyDuck();
+    }, 3500);
+}
 async function openBirthday() {
 
 
@@ -3163,6 +3284,8 @@ signature.style.opacity = "0";
 
 universe.classList.add("space-mode");
 
+startDuckJourney();
+    
 }
 
 /* ==================================================
