@@ -2939,90 +2939,96 @@ function startDuckJourney() {
             // Zigzag nhẹ theo đường bay
             const animation = duck.animate(
 
-                [
+               [
+        {
+            left: path.startX + "px",
+            top: path.startY + "px",
+            transform:
+                "translate(-50%, -50%) rotate(-4deg)"
+        },
 
-                    {
-                        left: path.startX + "px",
-                        top: path.startY + "px",
-                        transform:
-                            "translate(-50%, -50%) rotate(-2deg)"
-                    },
+        {
+            left:
+                (path.startX + dx * 0.16) + "px",
 
-                    {
-                        left:
-                            (path.startX + dx * 0.18) + "px",
+            top:
+                (path.startY + dy * 0.16 - 25) + "px",
 
-                        top:
-                            (path.startY + dy * 0.18 - 35) + "px",
+            transform:
+                "translate(-50%, -50%) rotate(2deg)"
+        },
 
-                        transform:
-                            "translate(-50%, -50%) rotate(1deg)"
-                    },
+        {
+            left:
+                (path.startX + dx * 0.32) + "px",
 
-                    {
-                        left:
-                            (path.startX + dx * 0.36) + "px",
+            top:
+                (path.startY + dy * 0.32 + 18) + "px",
 
-                        top:
-                            (path.startY + dy * 0.36 + 30) + "px",
+            transform:
+                "translate(-50%, -50%) rotate(4deg)"
+        },
 
-                        transform:
-                            "translate(-50%, -50%) rotate(2deg)"
-                    },
+        {
+            left:
+                (path.startX + dx * 0.48) + "px",
 
-                    {
-                        left:
-                            (path.startX + dx * 0.54) + "px",
+            top:
+                (path.startY + dy * 0.48 - 20) + "px",
 
-                        top:
-                            (path.startY + dy * 0.54 - 28) + "px",
+            transform:
+                "translate(-50%, -50%) rotate(-2deg)"
+        },
 
-                        transform:
-                            "translate(-50%, -50%) rotate(-1deg)"
-                    },
+        {
+            left:
+                (path.startX + dx * 0.64) + "px",
 
-                    {
-                        left:
-                            (path.startX + dx * 0.72) + "px",
+            top:
+                (path.startY + dy * 0.64 + 22) + "px",
 
-                        top:
-                            (path.startY + dy * 0.72 + 25) + "px",
+            transform:
+                "translate(-50%, -50%) rotate(-4deg)"
+        },
 
-                        transform:
-                            "translate(-50%, -50%) rotate(2deg)"
-                    },
+        {
+            left:
+                (path.startX + dx * 0.80) + "px",
 
-                    {
-                        left:
-                            (path.startX + dx * 0.88) + "px",
+            top:
+                (path.startY + dy * 0.80 - 16) + "px",
 
-                        top:
-                            (path.startY + dy * 0.88 - 18) + "px",
+            transform:
+                "translate(-50%, -50%) rotate(2deg)"
+        },
 
-                        transform:
-                            "translate(-50%, -50%) rotate(-1deg)"
-                    },
+        {
+            left:
+                (path.startX + dx * 0.92) + "px",
 
-                    {
-                        left: path.endX + "px",
-                        top: path.endY + "px",
+            top:
+                (path.startY + dy * 0.92 + 12) + "px",
 
-                        transform:
-                            "translate(-50%, -50%) rotate(-2deg)"
-                    }
+            transform:
+                "translate(-50%, -50%) rotate(3deg)"
+        },
 
-                ],
+        {
+            left: path.endX + "px",
+            top: path.endY + "px",
 
-                {
-                    // 55 giây — bay rất chậm
-                    duration: 55000,
+            transform:
+                "translate(-50%, -50%) rotate(-2deg)"
+        }
 
-                    // Đi đều, không khựng ở các điểm zigzag
-                    easing: "linear",
+    ],
 
-                    fill: "forwards"
-                }
-            );
+    {
+        duration: 55000,
+        easing: "linear",
+        fill: "forwards"
+    }
+);
 
             // Chỉ xử lý khi vịt ĐÃ bay hết đường
             animation.finished.then(function () {
