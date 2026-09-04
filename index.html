@@ -1,0 +1,2677 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday DH</title>
+
+
+<!-- ==========================================
+     FONT VIỆT HÓA
+========================================== -->
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap"
+      rel="stylesheet">
+
+
+<style>
+
+/* ==========================================
+   RESET
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+}
+
+
+/* ==========================================
+   BODY
+========================================== */
+
+body {
+
+    position: relative;
+
+    font-family:
+        "Quicksand",
+        sans-serif;
+
+    color: white;
+
+    background-image:
+        url("birthday-bg.png");
+
+    background-size:
+        cover;
+
+    background-position:
+        center;
+
+    background-repeat:
+        no-repeat;
+
+}
+
+
+/* ==========================================
+   LỚP PHỦ
+========================================== */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.10),
+            rgba(0,0,0,0.30)
+        );
+
+}
+
+
+/* ==========================================
+   ZOOM BACKGROUND
+========================================== */
+
+body.started {
+
+    animation:
+        backgroundZoom
+        18s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+@keyframes backgroundZoom {
+
+    from {
+
+        background-size:
+            100% 100%;
+
+    }
+
+    to {
+
+        background-size:
+            106% 106%;
+
+    }
+
+}
+
+
+/* ==========================================
+   MÀN HÌNH MỞ THIỆP
+========================================== */
+
+#startScreen {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 25px;
+
+    background:
+        rgba(35,20,15,0.43);
+
+    backdrop-filter:
+        blur(3px);
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+
+}
+
+
+#startScreen.hide {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+}
+
+
+/* ==========================================
+   TRÁI TIM MỞ ĐẦU
+========================================== */
+
+.open-heart {
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        60px;
+
+    line-height:
+        1;
+
+    margin-bottom:
+        25px;
+
+    animation:
+        heartbeat
+        1.8s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.15);
+
+    }
+
+}
+
+
+/* ==========================================
+   TIÊU ĐỀ MỞ
+========================================== */
+
+.open-title {
+
+    width: 100%;
+
+    font-family:
+        "Baloo 2",
+        sans-serif;
+
+    font-size:
+        clamp(30px,6vw,65px);
+
+    font-weight:
+        700;
+
+    line-height:
+        1.15;
+
+    letter-spacing:
+        1px;
+
+    margin-bottom:
+        15px;
+
+    text-shadow:
+        0 4px 18px
+        rgba(0,0,0,0.65);
+
+}
+
+
+.open-subtitle {
+
+    font-family:
+        "Quicksand",
+        sans-serif;
+
+    font-size:
+        clamp(15px,3vw,21px);
+
+    font-weight:
+        500;
+
+    letter-spacing:
+        1px;
+
+    margin-bottom:
+        32px;
+
+    text-shadow:
+        0 2px 10px
+        rgba(0,0,0,0.6);
+
+}
+
+
+/* ==========================================
+   NÚT MỞ
+========================================== */
+
+.open-button {
+
+    font-family:
+        "Quicksand",
+        sans-serif;
+
+    font-weight:
+        700;
+
+    font-size:
+        17px;
+
+    letter-spacing:
+        1px;
+
+    color:
+        white;
+
+    padding:
+        14px 34px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.7);
+
+    border-radius:
+        50px;
+
+    background:
+        rgba(255,255,255,0.14);
+
+    backdrop-filter:
+        blur(8px);
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        0 8px 30px
+        rgba(0,0,0,0.25);
+
+    transition:
+        all 0.35s ease;
+
+}
+
+
+.open-button:hover {
+
+    background:
+        rgba(255,255,255,0.28);
+
+    transform:
+        translateY(-3px)
+        scale(1.05);
+
+}
+
+
+/* ==========================================
+   KHU VỰC NỘI DUNG
+========================================== */
+
+.text-container {
+
+    position:
+        relative;
+
+    z-index:
+        10;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    text-align:
+        center;
+
+    pointer-events:
+        none;
+
+}
+
+
+/* ==========================================
+   COUNTDOWN
+========================================== */
+
+.countdown {
+
+    position:
+        absolute;
+
+    top:
+        50%;
+
+    left:
+        50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    font-family:
+        "Baloo 2",
+        sans-serif;
+
+    font-size:
+        clamp(100px,20vw,220px);
+
+    font-weight:
+        800;
+
+    line-height:
+        1;
+
+    text-shadow:
+        0 5px 25px
+        rgba(0,0,0,0.6);
+
+    opacity:
+        0;
+
+}
+
+
+body.started .number3 {
+
+    animation:
+        countdownNumber
+        1s
+        ease
+        forwards;
+
+    animation-delay:
+        0s;
+
+}
+
+
+body.started .number2 {
+
+    animation:
+        countdownNumber
+        1s
+        ease
+        forwards;
+
+    animation-delay:
+        1s;
+
+}
+
+
+body.started .number1 {
+
+    animation:
+        countdownNumber
+        1s
+        ease
+        forwards;
+
+    animation-delay:
+        2s;
+
+}
+
+
+body.started .dots {
+
+    animation:
+        dotsAppear
+        1s
+        ease
+        forwards;
+
+    animation-delay:
+        3s;
+
+}
+
+
+@keyframes countdownNumber {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(0.3);
+
+    }
+
+    25% {
+
+        opacity:
+            1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.15);
+
+    }
+
+    70% {
+
+        opacity:
+            1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.4);
+
+    }
+
+}
+
+
+@keyframes dotsAppear {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(0.5);
+
+    }
+
+    40% {
+
+        opacity:
+            1;
+
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.2);
+
+    }
+
+}
+
+
+/* ==========================================
+   HAPPY BIRTHDAY
+========================================== */
+
+.happy {
+
+    position:
+        absolute;
+
+    top:
+        29%;
+
+    left:
+        0;
+
+    width:
+        100%;
+
+    padding:
+        0 15px;
+
+    font-family:
+        "Baloo 2",
+        sans-serif;
+
+    font-size:
+        clamp(42px,9vw,105px);
+
+    font-weight:
+        800;
+
+    line-height:
+        1.1;
+
+    letter-spacing:
+        2px;
+
+    text-shadow:
+
+        0 5px 25px
+        rgba(0,0,0,0.7),
+
+        0 0 25px
+        rgba(255,255,255,0.25);
+
+    opacity:
+        0;
+
+}
+
+
+body.started .happy {
+
+    animation:
+        happyBirthday
+        3.2s
+        ease
+        forwards;
+
+    animation-delay:
+        4s;
+
+}
+
+
+@keyframes happyBirthday {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(70px)
+            scale(0.55)
+            rotate(-4deg);
+
+    }
+
+    25% {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(-8px)
+            scale(1.12)
+            rotate(2deg);
+
+    }
+
+    50% {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            scale(1)
+            rotate(0deg);
+
+    }
+
+    72% {
+
+        opacity:
+            1;
+
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(-35px)
+            scale(0.94);
+
+    }
+
+}
+
+
+/* ==========================================
+   MESSAGE CHUNG
+========================================== */
+
+.message {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    width:
+        92%;
+
+    max-width:
+        950px;
+
+    transform:
+        translateX(-50%);
+
+    font-family:
+        "Quicksand",
+        sans-serif;
+
+    font-size:
+        clamp(24px,4vw,43px);
+
+    font-weight:
+        600;
+
+    line-height:
+        1.35;
+
+    letter-spacing:
+        0.5px;
+
+    text-shadow:
+        0 4px 18px
+        rgba(0,0,0,0.65);
+
+    opacity:
+        0;
+
+}
+
+
+/* ==========================================
+   DH 20 TUỔI
+========================================== */
+
+.age {
+
+    top:
+        34%;
+
+    font-family:
+        "Baloo 2",
+        sans-serif;
+
+    font-size:
+        clamp(52px,9vw,100px);
+
+    font-weight:
+        800;
+
+    line-height:
+        1.1;
+
+    letter-spacing:
+        1px;
+
+    text-shadow:
+
+        0 5px 25px
+        rgba(0,0,0,0.7),
+
+        0 0 18px
+        rgba(255,255,255,0.45),
+
+        0 0 40px
+        rgba(255,220,160,0.30);
+
+}
+
+
+body.started .age {
+
+    animation:
+        ageHighlight
+        3.4s
+        cubic-bezier(.17,.67,.3,1.2)
+        forwards;
+
+    animation-delay:
+        7.6s;
+
+}
+
+
+@keyframes ageHighlight {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-50%)
+            translateY(45px)
+            scale(0.55);
+
+        filter:
+            blur(5px);
+
+    }
+
+    20% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(-50%)
+            translateY(-5px)
+            scale(1.12);
+
+        filter:
+            blur(0);
+
+    }
+
+    38% {
+
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1);
+
+    }
+
+    70% {
+
+        opacity:
+            1;
+
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-50%)
+            translateY(-25px)
+            scale(0.96);
+
+    }
+
+}
+
+
+/* ==========================================
+   HÔM NAY
+========================================== */
+
+.today {
+
+    top:
+        36%;
+
+}
+
+
+body.started .today {
+
+    animation:
+        messageOne
+        3.2s
+        ease
+        forwards;
+
+    animation-delay:
+        11.3s;
+
+}
+
+
+/* ==========================================
+   EM XỨNG ĐÁNG
+========================================== */
+
+.deserve {
+
+    top:
+        36%;
+
+}
+
+
+body.started .deserve {
+
+    animation:
+        messageOne
+        3.2s
+        ease
+        forwards;
+
+    animation-delay:
+        14.8s;
+
+}
+
+
+/* ==========================================
+   NHỮNG ĐIỀU TỐT ĐẸP
+========================================== */
+
+.good {
+
+    top:
+        36%;
+
+    font-family:
+        "Baloo 2",
+        sans-serif;
+
+    font-size:
+        clamp(28px,5vw,55px);
+
+    font-weight:
+        700;
+
+}
+
+
+body.started .good {
+
+    animation:
+        messageOne
+        3.2s
+        ease
+        forwards;
+
+    animation-delay:
+        18.3s;
+
+}
+
+
+@keyframes messageOne {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-50%)
+            translateY(35px);
+
+    }
+
+    20% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(-50%)
+            translateY(0);
+
+    }
+
+    70% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(-50%)
+            translateY(0);
+
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-50%)
+            translateY(-25px);
+
+    }
+
+}
+
+
+/* ==========================================
+   BEST WISHES
+========================================== */
+
+.final {
+
+    top:
+        34%;
+
+    font-family:
+        "Baloo 2",
+        sans-serif;
+
+    font-size:
+        clamp(38px,7vw,75px);
+
+    font-weight:
+        700;
+
+    font-style:
+        italic;
+
+    letter-spacing:
+        2px;
+
+    text-shadow:
+
+        0 5px 25px
+        rgba(0,0,0,0.7),
+
+        0 0 25px
+        rgba(255,255,255,0.25);
+
+}
+
+
+body.started .final {
+
+    animation:
+        finalMessage
+        4.8s
+        ease
+        forwards;
+
+    animation-delay:
+        21.8s;
+
+}
+
+
+@keyframes finalMessage {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-50%)
+            translateY(35px)
+            scale(0.7);
+
+    }
+
+    20% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1.08);
+
+    }
+
+    45% {
+
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1);
+
+    }
+
+    72% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1);
+
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-50%)
+            translateY(-25px)
+            scale(0.95);
+
+    }
+
+}
+
+
+/* ==========================================
+   TRÁI TIM BAY
+========================================== */
+
+.hearts {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        5;
+
+    overflow:
+        hidden;
+
+    pointer-events:
+        none;
+
+}
+
+
+.heart {
+
+    position:
+        absolute;
+
+    bottom:
+        -50px;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        18px;
+
+    opacity:
+        0;
+
+}
+
+
+body.started .heart {
+
+    animation:
+        floatHeart
+        8s
+        linear
+        infinite;
+
+}
+
+
+.heart:nth-child(1) {
+
+    left:
+        12%;
+
+    animation-delay:
+        2s;
+
+    font-size:
+        16px;
+
+}
+
+
+.heart:nth-child(2) {
+
+    left:
+        27%;
+
+    animation-delay:
+        5s;
+
+    font-size:
+        22px;
+
+}
+
+
+.heart:nth-child(3) {
+
+    left:
+        48%;
+
+    animation-delay:
+        1s;
+
+    font-size:
+        15px;
+
+}
+
+
+.heart:nth-child(4) {
+
+    left:
+        70%;
+
+    animation-delay:
+        4s;
+
+    font-size:
+        20px;
+
+}
+
+
+.heart:nth-child(5) {
+
+    left:
+        88%;
+
+    animation-delay:
+        7s;
+
+    font-size:
+        16px;
+
+}
+
+
+@keyframes floatHeart {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(0)
+            scale(0.7)
+            rotate(0deg);
+
+    }
+
+    15% {
+
+        opacity:
+            0.65;
+
+    }
+
+    75% {
+
+        opacity:
+            0.4;
+
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(-110vh)
+            scale(1.2)
+            rotate(25deg);
+
+    }
+
+}
+
+
+/* ==========================================
+   ==========================================
+   PHẦN KẾT — VŨ TRỤ SONG SONG
+   ==========================================
+========================================== */
+
+
+/* Màn hình chuyển sang không gian */
+
+#universeScene {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        20;
+
+    pointer-events:
+        none;
+
+    opacity:
+        0;
+
+}
+
+
+/* ==========================================
+   LỚP TỐI
+========================================== */
+
+#universeDark {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        21;
+
+    background:
+        rgba(8,5,18,0.82);
+
+    opacity:
+        0;
+
+}
+
+
+/* ==========================================
+   BẦU TRỜI / SAO
+========================================== */
+
+.stars {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        22;
+
+    overflow:
+        hidden;
+
+    opacity:
+        0;
+
+}
+
+
+.star {
+
+    position:
+        absolute;
+
+    width:
+        3px;
+
+    height:
+        3px;
+
+    border-radius:
+        50%;
+
+    background:
+        white;
+
+    box-shadow:
+        0 0 8px
+        rgba(255,255,255,0.8);
+
+    opacity:
+        0.7;
+
+}
+
+
+.star:nth-child(1) {
+    top: 15%;
+    left: 12%;
+}
+
+.star:nth-child(2) {
+    top: 25%;
+    left: 25%;
+    width: 2px;
+    height: 2px;
+}
+
+.star:nth-child(3) {
+    top: 10%;
+    left: 42%;
+}
+
+.star:nth-child(4) {
+    top: 35%;
+    left: 58%;
+    width: 2px;
+    height: 2px;
+}
+
+.star:nth-child(5) {
+    top: 18%;
+    left: 72%;
+}
+
+.star:nth-child(6) {
+    top: 45%;
+    left: 87%;
+}
+
+.star:nth-child(7) {
+    top: 65%;
+    left: 15%;
+    width: 2px;
+    height: 2px;
+}
+
+.star:nth-child(8) {
+    top: 75%;
+    left: 30%;
+}
+
+.star:nth-child(9) {
+    top: 60%;
+    left: 48%;
+    width: 2px;
+    height: 2px;
+}
+
+.star:nth-child(10) {
+    top: 72%;
+    left: 67%;
+}
+
+.star:nth-child(11) {
+    top: 55%;
+    left: 80%;
+    width: 2px;
+    height: 2px;
+}
+
+.star:nth-child(12) {
+    top: 87%;
+    left: 90%;
+}
+
+.star:nth-child(13) {
+    top: 42%;
+    left: 38%;
+    width: 2px;
+    height: 2px;
+}
+
+.star:nth-child(14) {
+    top: 12%;
+    left: 90%;
+}
+
+.star:nth-child(15) {
+    top: 88%;
+    left: 55%;
+    width: 2px;
+    height: 2px;
+}
+
+.star:nth-child(16) {
+    top: 30%;
+    left: 5%;
+}
+
+.star:nth-child(17) {
+    top: 80%;
+    left: 8%;
+    width: 2px;
+    height: 2px;
+}
+
+.star:nth-child(18) {
+    top: 52%;
+    left: 94%;
+}
+
+
+/* ==========================================
+   SAO NHấp NHÁY
+========================================== */
+
+.star {
+
+    animation:
+        twinkle
+        3s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+.star:nth-child(2n) {
+
+    animation-delay:
+        1s;
+
+}
+
+
+.star:nth-child(3n) {
+
+    animation-delay:
+        1.7s;
+
+}
+
+
+@keyframes twinkle {
+
+    from {
+
+        opacity:
+            0.25;
+
+        transform:
+            scale(0.7);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            scale(1.5);
+
+    }
+
+}
+
+
+/* ==========================================
+   TEXT VŨ TRỤ
+========================================== */
+
+.universe-text {
+
+    position:
+        fixed;
+
+    z-index:
+        30;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    width:
+        90%;
+
+    max-width:
+        900px;
+
+    text-align:
+        center;
+
+    transform:
+        translate(-50%,-50%);
+
+    font-family:
+        "Quicksand",
+        sans-serif;
+
+    font-size:
+        clamp(23px,4vw,42px);
+
+    font-weight:
+        500;
+
+    line-height:
+        1.6;
+
+    letter-spacing:
+        0.5px;
+
+    text-shadow:
+        0 3px 20px
+        rgba(0,0,0,0.9);
+
+    opacity:
+        0;
+
+}
+
+
+/* ==========================================
+   CÂU CUỐI VŨ TRỤ
+========================================== */
+
+.universe-final {
+
+    font-family:
+        "Baloo 2",
+        sans-serif;
+
+    font-size:
+        clamp(27px,5vw,55px);
+
+    font-weight:
+        600;
+
+    line-height:
+        1.5;
+
+}
+
+
+.universe-final strong {
+
+    display:
+        block;
+
+    margin-top:
+        12px;
+
+    font-size:
+        clamp(30px,5.5vw,62px);
+
+    font-weight:
+        800;
+
+}
+
+
+/* ==========================================
+   DH CUỐI
+========================================== */
+
+.universe-signature {
+
+    position:
+        fixed;
+
+    z-index:
+        31;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    width:
+        90%;
+
+    text-align:
+        center;
+
+    transform:
+        translate(-50%,-50%);
+
+    opacity:
+        0;
+
+}
+
+
+.signature-dh {
+
+    font-family:
+        "Baloo 2",
+        sans-serif;
+
+    font-size:
+        clamp(65px,13vw,140px);
+
+    font-weight:
+        800;
+
+    line-height:
+        1;
+
+    text-shadow:
+
+        0 0 20px
+        rgba(255,255,255,0.6),
+
+        0 0 50px
+        rgba(255,220,180,0.4);
+
+}
+
+
+.signature-small {
+
+    margin-top:
+        18px;
+
+    font-family:
+        "Quicksand",
+        sans-serif;
+
+    font-size:
+        clamp(14px,2.5vw,20px);
+
+    font-weight:
+        500;
+
+    letter-spacing:
+        3px;
+
+    opacity:
+        0.9;
+
+}
+
+
+/* ==========================================
+   CHUYỂN SANG VŨ TRỤ
+========================================== */
+
+body.started #universeScene {
+
+    animation:
+        universeAppear
+        1s
+        ease
+        forwards;
+
+    animation-delay:
+        26.8s;
+
+}
+
+
+body.started #universeDark {
+
+    animation:
+        universeDark
+        3s
+        ease
+        forwards;
+
+    animation-delay:
+        26.5s;
+
+}
+
+
+body.started .stars {
+
+    animation:
+        starsAppear
+        3s
+        ease
+        forwards;
+
+    animation-delay:
+        27.2s;
+
+}
+
+
+@keyframes universeAppear {
+
+    0% {
+
+        opacity:
+            0;
+
+    }
+
+    100% {
+
+        opacity:
+            1;
+
+    }
+
+}
+
+
+@keyframes universeDark {
+
+    0% {
+
+        opacity:
+            0;
+
+    }
+
+    100% {
+
+        opacity:
+            1;
+
+    }
+
+}
+
+
+@keyframes starsAppear {
+
+    0% {
+
+        opacity:
+            0;
+
+    }
+
+    100% {
+
+        opacity:
+            1;
+
+    }
+
+}
+
+
+/* ==========================================
+   CÂU VŨ TRỤ 1
+========================================== */
+
+.u1 {
+
+    animation:
+        universeSentence
+        4s
+        ease
+        forwards;
+
+    animation-delay:
+        28s;
+
+}
+
+
+/* ==========================================
+   CÂU VŨ TRỤ 2
+========================================== */
+
+.u2 {
+
+    animation:
+        universeSentence
+        4s
+        ease
+        forwards;
+
+    animation-delay:
+        32s;
+
+}
+
+
+/* ==========================================
+   CÂU VŨ TRỤ 3
+========================================== */
+
+.u3 {
+
+    animation:
+        universeSentence
+        4s
+        ease
+        forwards;
+
+    animation-delay:
+        36s;
+
+}
+
+
+/* ==========================================
+   CÂU VŨ TRỤ 4
+========================================== */
+
+.u4 {
+
+    animation:
+        universeSentence
+        4.5s
+        ease
+        forwards;
+
+    animation-delay:
+        40s;
+
+}
+
+
+@keyframes universeSentence {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translate(-50%,-50%)
+            translateY(25px);
+
+        filter:
+            blur(5px);
+
+    }
+
+    20% {
+
+        opacity:
+            1;
+
+        transform:
+            translate(-50%,-50%)
+            translateY(0);
+
+        filter:
+            blur(0);
+
+    }
+
+    70% {
+
+        opacity:
+            1;
+
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translate(-50%,-50%)
+            translateY(-20px);
+
+    }
+
+}
+
+
+/* ==========================================
+   CÂU CUỐI ĐẶC BIỆT
+========================================== */
+
+.u-final {
+
+    animation:
+        universeFinal
+        6s
+        ease
+        forwards;
+
+    animation-delay:
+        44.5s;
+
+}
+
+
+@keyframes universeFinal {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(0.85);
+
+        filter:
+            blur(5px);
+
+    }
+
+    25% {
+
+        opacity:
+            1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.03);
+
+        filter:
+            blur(0);
+
+    }
+
+    45% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+
+    }
+
+    75% {
+
+        opacity:
+            1;
+
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(0.98);
+
+    }
+
+}
+
+
+/* ==========================================
+   CHỮ KÝ CUỐI
+========================================== */
+
+body.started .universe-signature {
+
+    animation:
+        signatureAppear
+        5s
+        ease
+        forwards;
+
+    animation-delay:
+        51s;
+
+}
+
+
+@keyframes signatureAppear {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(0.7);
+
+        filter:
+            blur(6px);
+
+    }
+
+    30% {
+
+        opacity:
+            1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.05);
+
+        filter:
+            blur(0);
+
+    }
+
+    50% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+
+    }
+
+    100% {
+
+        opacity:
+            1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+
+    }
+
+}
+
+
+/* ==========================================
+   NÚT NHẠC
+========================================== */
+
+#musicButton {
+
+    position:
+        fixed;
+
+    right:
+        22px;
+
+    bottom:
+        22px;
+
+    z-index:
+        50;
+
+    width:
+        48px;
+
+    height:
+        48px;
+
+    border-radius:
+        50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.55);
+
+    background:
+        rgba(0,0,0,0.22);
+
+    color:
+        white;
+
+    font-size:
+        21px;
+
+    cursor:
+        pointer;
+
+    backdrop-filter:
+        blur(7px);
+
+    opacity:
+        0;
+
+    transition:
+        0.3s ease;
+
+}
+
+
+#musicButton.show {
+
+    opacity:
+        1;
+
+}
+
+
+#musicButton:hover {
+
+    transform:
+        scale(1.08);
+
+}
+
+
+/* ==========================================
+   ĐIỆN THOẠI
+========================================== */
+
+@media (max-width:600px) {
+
+
+    .open-title {
+
+        font-size:
+            36px;
+
+    }
+
+
+    .happy {
+
+        top:
+            31%;
+
+        font-size:
+            46px;
+
+        letter-spacing:
+            1px;
+
+    }
+
+
+    .age {
+
+        top:
+            35%;
+
+        font-size:
+            60px;
+
+    }
+
+
+    .today,
+    .deserve,
+    .good {
+
+        top:
+            39%;
+
+    }
+
+
+    .final {
+
+        top:
+            37%;
+
+        font-size:
+            43px;
+
+    }
+
+
+    .universe-text {
+
+        width:
+            86%;
+
+        font-size:
+            22px;
+
+        line-height:
+            1.55;
+
+    }
+
+
+    .universe-final {
+
+        font-size:
+            25px;
+
+    }
+
+
+    .universe-final strong {
+
+        font-size:
+            31px;
+
+    }
+
+
+    .signature-dh {
+
+        font-size:
+            75px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     MÀN HÌNH MỞ
+========================================== -->
+
+<div id="startScreen">
+
+
+    <div class="open-heart">
+        ♡
+    </div>
+
+
+    <div class="open-title">
+        Một điều nhỏ dành cho em
+    </div>
+
+
+    <div class="open-subtitle">
+        Hãy bấm vào đây nhé...
+    </div>
+
+
+    <button
+        class="open-button"
+        onclick="openBirthday()">
+
+        MỞ THIỆP ♡
+
+    </button>
+
+
+</div>
+
+
+<!-- ==========================================
+     NHẠC LYHAN
+========================================== -->
+
+<audio
+    id="birthdayMusic"
+    loop>
+
+    <source
+        src="vu-tru-song-song.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<!-- ==========================================
+     TRÁI TIM
+========================================== -->
+
+<div class="hearts">
+
+    <div class="heart">♡</div>
+
+    <div class="heart">♡</div>
+
+    <div class="heart">♡</div>
+
+    <div class="heart">♡</div>
+
+    <div class="heart">♡</div>
+
+</div>
+
+
+<!-- ==========================================
+     NÚT NHẠC
+========================================== -->
+
+<button
+    id="musicButton"
+    onclick="toggleMusic()">
+
+    ♪
+
+</button>
+
+
+<!-- ==========================================
+     NỘI DUNG CHÍNH
+========================================== -->
+
+<div class="text-container">
+
+
+    <!-- 3 -->
+
+    <div class="countdown number3">
+        3
+    </div>
+
+
+    <!-- 2 -->
+
+    <div class="countdown number2">
+        2
+    </div>
+
+
+    <!-- 1 -->
+
+    <div class="countdown number1">
+        1
+    </div>
+
+
+    <!-- ... -->
+
+    <div class="countdown dots">
+        ...
+    </div>
+
+
+    <!-- HAPPY BIRTHDAY -->
+
+    <div class="happy">
+        HAPPY BIRTHDAY
+    </div>
+
+
+    <!-- DH 20 TUỔI -->
+
+    <div class="message age">
+        DH 20 tuổi
+    </div>
+
+
+    <!-- HÔM NAY -->
+
+    <div class="message today">
+        Hôm nay là ngày đặc biệt của e
+    </div>
+
+
+    <!-- XỨNG ĐÁNG -->
+
+    <div class="message deserve">
+        em xứng đáng với
+    </div>
+
+
+    <!-- TỐT ĐẸP -->
+
+    <div class="message good">
+        những điều tốt đẹp nhất
+    </div>
+
+
+    <!-- BEST WISHES -->
+
+    <div class="message final">
+        best wishes for you
+    </div>
+
+
+</div>
+
+
+<!-- ==========================================
+     PHẦN KẾT — VŨ TRỤ SONG SONG
+========================================== -->
+
+
+<div id="universeScene">
+
+
+    <!-- LỚP TỐI -->
+
+    <div id="universeDark"></div>
+
+
+    <!-- SAO -->
+
+    <div class="stars">
+
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+
+    </div>
+
+
+</div>
+
+
+<!-- ==========================================
+     CÁC CÂU CUỐI
+========================================== -->
+
+
+<div class="universe-text u1">
+
+    20 tuổi rồi...
+
+</div>
+
+
+<div class="universe-text u2">
+
+    Mong em đừng vội lớn quá.
+
+</div>
+
+
+<div class="universe-text u3">
+
+    Cứ vui khi em muốn vui.<br>
+    Cứ khóc khi em cần khóc.
+
+</div>
+
+
+<div class="universe-text u4">
+
+    Và nếu có một ngày em thấy mệt...
+
+</div>
+
+
+<div class="universe-text universe-final">
+
+    hãy nhớ rằng em vẫn luôn<br>
+    xứng đáng với những điều<br>
+    dịu dàng nhất.
+
+</div>
+
+
+<!-- ==========================================
+     CÂU KẾT
+========================================== -->
+
+
+<div class="universe-text u-final">
+
+    Ở bất kỳ vũ trụ nào...
+
+    <strong>
+        em cũng luôn được yêu thương. ♡
+    </strong>
+
+</div>
+
+
+<!-- ==========================================
+     CHỮ KÝ CUỐI
+========================================== -->
+
+
+<div class="universe-signature">
+
+    <div class="signature-dh">
+        DH ♡
+    </div>
+
+    <div class="signature-small">
+        HAPPY 20TH BIRTHDAY
+    </div>
+
+</div>
+
+
+<script>
+
+
+/* ==========================================
+   MỞ THIỆP
+========================================== */
+
+function openBirthday() {
+
+
+    const body =
+        document.body;
+
+
+    const startScreen =
+        document.getElementById(
+            "startScreen"
+        );
+
+
+    const music =
+        document.getElementById(
+            "birthdayMusic"
+        );
+
+
+    const musicButton =
+        document.getElementById(
+            "musicButton"
+        );
+
+
+    /* ======================================
+       BẮT ĐẦU ANIMATION
+    ====================================== */
+
+    body.classList.add(
+        "started"
+    );
+
+
+    /* ======================================
+       PHÁT NHẠC
+    ====================================== */
+
+    music.volume =
+        0.45;
+
+
+    music.play()
+        .then(function() {
+
+            musicButton.classList.add(
+                "show"
+            );
+
+        })
+        .catch(function(error) {
+
+            console.log(
+                "Không thể phát nhạc:",
+                error
+            );
+
+        });
+
+
+    /* ======================================
+       ẨN MÀN HÌNH MỞ
+    ====================================== */
+
+    startScreen.classList.add(
+        "hide"
+    );
+
+}
+
+
+/* ==========================================
+   BẬT / TẮT NHẠC
+========================================== */
+
+function toggleMusic() {
+
+
+    const music =
+        document.getElementById(
+            "birthdayMusic"
+        );
+
+
+    const button =
+        document.getElementById(
+            "musicButton"
+        );
+
+
+    if (music.paused) {
+
+
+        music.play();
+
+
+        button.innerHTML =
+            "♪";
+
+
+    }
+
+    else {
+
+
+        music.pause();
+
+
+        button.innerHTML =
+            "×";
+
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>
