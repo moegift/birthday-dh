@@ -886,6 +886,45 @@ body.started .heart {
 
 }
 
+.duck-floating {
+    position: absolute;
+    width: 180px;
+    left: 50%;
+    top: 58%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.universe.space-mode .duck-floating {
+    animation:
+        duckFloatingIn 2s ease 2s forwards,
+        duckFloat 4s ease-in-out 4s infinite;
+}
+
+@keyframes duckFloatingIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes duckFloat {
+    0%, 100% {
+        transform: translate(-50%, -50%) translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) translateY(-12px) rotate(1deg);
+    }
+}
+    
 .universe::before {
     content: "";
     position: absolute;
@@ -2186,7 +2225,7 @@ body.started .heart {
     class="universe"
     id="universe"
 >
-
+<img src="duck-floating.png" class="duck-floating" alt="">
 
     <div class="stars">
 
