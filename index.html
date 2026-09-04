@@ -81,7 +81,7 @@ body {
     z-index: 0;
 
     background-image:
-        url("birthday-bg.png");
+        url("birthday-bg-clean.png");
 
     background-size: cover;
 
@@ -2003,6 +2003,72 @@ body.started .heart {
 
 }
     
+/* ==================================================
+   CON VỊT CỬ ĐỘNG NHẸ
+================================================== */
+
+.duck-layer {
+    position: fixed;
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+.duck {
+    position: absolute;
+
+    width: 180px;
+
+    left: 58.2%;
+    bottom: 7.2%;
+
+    display: block;
+
+    transform-origin: center bottom;
+
+    animation:
+        duckIdle
+        3.6s
+        ease-in-out
+        infinite;
+}
+
+
+/* Vịt nhún và nghiêng rất nhẹ */
+
+@keyframes duckIdle {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+    }
+
+    25% {
+        transform:
+            translateY(-2px)
+            rotate(-0.5deg);
+    }
+
+    50% {
+        transform:
+            translateY(-4px)
+            rotate(0.7deg);
+    }
+
+    75% {
+        transform:
+            translateY(-2px)
+            rotate(-0.3deg);
+    }
+
+}
+
 </style>
 
 </head>
@@ -2016,6 +2082,10 @@ body.started .heart {
 ================================================== -->
 
 <div class="background"></div>
+
+<div class="duck-layer">
+    <img src="duck.png" class="duck" alt="">
+</div>    
 
     <!-- ==================================================
      LÁ RƠI ĐỘNG
