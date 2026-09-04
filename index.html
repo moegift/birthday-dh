@@ -1709,6 +1709,302 @@ body.started .heart {
 
 }
 
+/* ==================================================
+   LÁ RƠI ĐỘNG
+================================================== */
+
+.falling-leaves {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+
+/* LÁ */
+
+.leaf {
+
+    position: absolute;
+
+    top: -10vh;
+
+    display: block;
+
+    font-size: 24px;
+
+    opacity: 0;
+
+    filter:
+        drop-shadow(
+            0 3px 4px
+            rgba(0,0,0,0.18)
+        );
+
+    animation:
+        leafFall
+        linear
+        infinite;
+
+}
+
+
+/* ==================================================
+   TỪNG CHIẾC LÁ
+================================================== */
+
+.leaf-1 {
+
+    left: 5%;
+
+    font-size: 22px;
+
+    animation-duration: 8s;
+
+    animation-delay: 0s;
+
+}
+
+
+.leaf-2 {
+
+    left: 14%;
+
+    font-size: 18px;
+
+    animation-duration: 10s;
+
+    animation-delay: 3s;
+
+}
+
+
+.leaf-3 {
+
+    left: 24%;
+
+    font-size: 27px;
+
+    animation-duration: 9s;
+
+    animation-delay: 1.5s;
+
+}
+
+
+.leaf-4 {
+
+    left: 34%;
+
+    font-size: 20px;
+
+    animation-duration: 11s;
+
+    animation-delay: 5s;
+
+}
+
+
+.leaf-5 {
+
+    left: 43%;
+
+    font-size: 25px;
+
+    animation-duration: 8.5s;
+
+    animation-delay: 2s;
+
+}
+
+
+.leaf-6 {
+
+    left: 53%;
+
+    font-size: 18px;
+
+    animation-duration: 10.5s;
+
+    animation-delay: 6s;
+
+}
+
+
+.leaf-7 {
+
+    left: 63%;
+
+    font-size: 28px;
+
+    animation-duration: 9.5s;
+
+    animation-delay: 4s;
+
+}
+
+
+.leaf-8 {
+
+    left: 72%;
+
+    font-size: 21px;
+
+    animation-duration: 12s;
+
+    animation-delay: 1s;
+
+}
+
+
+.leaf-9 {
+
+    left: 80%;
+
+    font-size: 25px;
+
+    animation-duration: 9s;
+
+    animation-delay: 7s;
+
+}
+
+
+.leaf-10 {
+
+    left: 88%;
+
+    font-size: 19px;
+
+    animation-duration: 11s;
+
+    animation-delay: 3.5s;
+
+}
+
+
+.leaf-11 {
+
+    left: 95%;
+
+    font-size: 26px;
+
+    animation-duration: 10s;
+
+    animation-delay: 5.5s;
+
+}
+
+
+.leaf-12 {
+
+    left: 38%;
+
+    font-size: 16px;
+
+    animation-duration: 13s;
+
+    animation-delay: 8s;
+
+}
+
+
+/* ==================================================
+   CHUYỂN ĐỘNG LÁ
+================================================== */
+
+@keyframes leafFall {
+
+    0% {
+
+        transform:
+            translate3d(
+                0,
+                -12vh,
+                0
+            )
+            rotate(0deg);
+
+        opacity: 0;
+
+    }
+
+
+    8% {
+
+        opacity: 0.8;
+
+    }
+
+
+    25% {
+
+        transform:
+            translate3d(
+                45px,
+                25vh,
+                0
+            )
+            rotate(90deg);
+
+    }
+
+
+    50% {
+
+        transform:
+            translate3d(
+                -35px,
+                52vh,
+                0
+            )
+            rotate(190deg);
+
+    }
+
+
+    75% {
+
+        transform:
+            translate3d(
+                55px,
+                78vh,
+                0
+            )
+            rotate(280deg);
+
+    }
+
+
+    92% {
+
+        opacity: 0.65;
+
+    }
+
+
+    100% {
+
+        transform:
+            translate3d(
+                -20px,
+                115vh,
+                0
+            )
+            rotate(360deg);
+
+        opacity: 0;
+
+    }
+
+}
+    
 </style>
 
 </head>
