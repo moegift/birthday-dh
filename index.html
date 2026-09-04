@@ -2942,25 +2942,14 @@ async function openBirthday() {
        FULLSCREEN
     ================================================== */
 
-    try {
+  enterFullscreen().catch(function(error) {
+    console.log(
+        "Fullscreen không khả dụng:",
+        error
+    );
 
-        await enterFullscreen();
-
-    }
-
-    catch(error) {
-
-        console.log(
-            "Fullscreen không khả dụng:",
-            error
-        );
-
-        fullscreenButton.classList.add(
-            "show"
-        );
-
-    }
-
+    fullscreenButton.classList.add("show");
+});
 
     /* ==================================================
        ẨN MÀN HÌNH ĐẦU
