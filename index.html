@@ -2959,16 +2959,12 @@ for (let i = 0; i <= points; i++) {
         dy * progress +
         wave;
 
-    const rotation =
-        Math.sin(progress * Math.PI * 2 * waveCount)
-        * 2.5;
-
     keyframes.push({
-        left: x + "px",
-        top: y + "px",
-        transform:
-            `translate(-50%, -50%) rotate(${rotation}deg)`
-    });
+    left: x + "px",
+    top: y + "px",
+    transform: "translate(-50%, -50%) rotate(-2deg)"
+});
+    
 }
 
 const animation = duck.animate(
